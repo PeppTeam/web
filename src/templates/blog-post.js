@@ -7,40 +7,51 @@ import styled from "styled-components";
 // import { Grid, GridItem } from "styled-grid-responsive";
 import Img from "gatsby-image";
 import moment from "moment";
+import { Wide, Center, Narrow } from "../components/layout";
+import { H1, Intro, Content } from "../components/Typography";
 
 const Image = styled(Img)`
-  width: 20rem;
-  height: 20rem;
-  background-size: cover;
-  display: block;
+  width: auto;
+  height: 600px;
+  margin: 50px;
 `;
 
 export default function BlogPost({ data }) {
   const post = data.contentfulBlogPost;
   return (
     <Page>
-      <h1>{post.title}</h1>
-      {post.tags.map(tag => {
-        return <p key={tag}>{tag}</p>;
-      })}
-      <p> {moment(post.publishDate).format("L")}</p>
+      <Narrow>
+        <Center>
+          <H1>{post.title}</H1>
+          <div>
+            {post.tags.map(tag => {
+              return <p key={tag}>{tag}</p>;
+            })}
+          </div>
 
-      <div
-        dangerouslySetInnerHTML={{
-          __html: post.description.childMarkdownRemark.html
-        }}
-      />
-      <Image fluid={post.heroImage.fluid} />
-      <div
-        dangerouslySetInnerHTML={{
-          __html: post.body.childMarkdownRemark.html
-        }}
-      />
-      <div>
-        <Image fluid={post.author.image.fluid} />
+          <p> {moment(post.publishDate).format("L")}</p>
+        </Center>
+      </Narrow>
+      <Wide>
+        <Image fluid={post.heroImage.fluid} />
+      </Wide>
+      <Narrow>
+        <Intro
+          dangerouslySetInnerHTML={{
+            __html: post.description.childMarkdownRemark.html
+          }}
+        />
+        <Content
+          dangerouslySetInnerHTML={{
+            __html: post.body.childMarkdownRemark.html
+          }}
+        />
+        <div>
+          <Image fluid={post.author.image.fluid} />
 
-        <h2>{post.author.name}</h2>
-      </div>
+          <h2>{post.author.name}</h2>
+        </div>
+      </Narrow>
     </Page>
   );
 }
@@ -52,6 +63,9 @@ export const blogPostPageQuery = graphql`
       heroImage {
         fluid(maxWidth: 1024) {
           src
+          srcSet
+          sizes
+          aspectRatio
         }
       }
       description {
@@ -70,6 +84,9 @@ export const blogPostPageQuery = graphql`
         image {
           fluid(maxWidth: 1024) {
             src
+            srcSet
+            sizes
+            aspectRatio
           }
         }
       }

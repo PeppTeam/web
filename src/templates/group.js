@@ -2,10 +2,9 @@ import React from "react";
 // import { Link, graphql } from "gatsby";
 import Page from "../components/Page";
 import Img from "gatsby-image";
-
-// import { H1, H2, P, Intro } from "../components/typography";
+import { H1, H2, Intro, Content } from "../components/Typography";
 // import { Hero } from "../components/layout/Hero";
-// import { Narrow } from "../components/layout";
+import { Narrow, Wide } from "../components/layout";
 import styled from "styled-components";
 // import { Grid, GridItem } from "styled-grid-responsive";
 // import Img from "gatsby-image";
@@ -27,10 +26,6 @@ const Image = styled(Img)`
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   margin-bottom: 1rem;
-`;
-
-const Body = styled.div`
-  color: red;
 `;
 
 // const Name = styled.p`
@@ -56,27 +51,31 @@ export default function Group({ data }) {
   const group = data.contentfulGroup;
   return (
     <Page>
-      <h1>{group.title}</h1>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: group.intro.childMarkdownRemark.html
-        }}
-      />
-      <Body
-        dangerouslySetInnerHTML={{
-          __html: group.body.childMarkdownRemark.html
-        }}
-      />
-
-      {group.persons.map(person => {
-        return (
-          <div key={person.name}>
-            <Image fluid={person.image.fluid} />
-            <p>{person.name}</p>
-            <p>{person.title}</p>
-          </div>
-        );
-      })}
+      <Narrow>
+        <H1>{group.title}</H1>
+        <Intro
+          dangerouslySetInnerHTML={{
+            __html: group.intro.childMarkdownRemark.html
+          }}
+        />
+        <Content
+          dangerouslySetInnerHTML={{
+            __html: group.body.childMarkdownRemark.html
+          }}
+        />
+        <H2>Vi är Pepp {group.title}</H2>
+      </Narrow>
+      <Wide>
+        {group.persons.map(person => {
+          return (
+            <div key={person.name}>
+              <Image fluid={person.image.fluid} />
+              <p>{person.name}</p>
+              <p>{person.title}</p>
+            </div>
+          );
+        })}
+      </Wide>
     </Page>
   );
 }
@@ -101,6 +100,9 @@ export const groupPageQuery = graphql`
         image {
           fluid(maxWidth: 1024) {
             src
+            srcSet
+            sizes
+            aspectRatio
           }
         }
       }

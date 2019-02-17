@@ -1,6 +1,6 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import Layout from "../components/Layout";
+import Page from "../components/Page";
 
 const HomePage = () => (
   <StaticQuery
@@ -22,7 +22,7 @@ const HomePage = () => (
       }
     `}
     render={({ allContentfulPartner }) => (
-      <Layout>
+      <Page>
         {allContentfulPartner.edges.map(({ node }) => {
           return (
             <a key={node.name} href={node.link}>
@@ -30,7 +30,7 @@ const HomePage = () => (
             </a>
           );
         })}
-      </Layout>
+      </Page>
     )}
   />
 );

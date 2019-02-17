@@ -1,7 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import moment from "moment";
-import Layout from "../components/Layout";
+import Page from "../components/Page";
 
 const BlogPage = () => (
   <StaticQuery
@@ -28,7 +28,7 @@ const BlogPage = () => (
       }
     `}
     render={({ allContentfulBlogPost }) => (
-      <Layout>
+      <Page>
         {allContentfulBlogPost.edges.map(({ node }) => {
           return (
             <div>
@@ -40,7 +40,7 @@ const BlogPage = () => (
             </div>
           );
         })}
-      </Layout>
+      </Page>
     )}
   />
 );

@@ -28,7 +28,7 @@ const ContactPage = () => (
               title
               persons {
                 name
-                title
+                role
                 image {
                   fluid(maxWidth: 1024) {
                     src
@@ -70,7 +70,7 @@ const ContactPage = () => (
                       <Box width={512} px={2} key={node.name}>
                         <Image fluid={person.image.fluid} />
                         <P>{person.name}</P>
-                        <P>{person.title}</P>
+                        <P>{person.role}</P>
                       </Box>
                     );
                   })}

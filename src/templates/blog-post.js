@@ -76,7 +76,7 @@ export const blogPostPageQuery = graphql`
       }
       author {
         name
-        title
+        role
         image {
           fluid(maxWidth: 1024) {
             src

@@ -15,7 +15,7 @@ const MemberPage = () => (
         <Box width={1 / 2} p={2}>
           <LinkCard to="/mentor">Mentor</LinkCard>
         </Box>
-      </Flex>{" "}
+      </Flex>
       <H2>Just nu söker vi också:</H2>
       <P>Content team Till annons</P>
       <P>

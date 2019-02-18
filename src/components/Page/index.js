@@ -2,7 +2,7 @@ import React from "react";
 import styled, { injectGlobal } from "styled-components";
 import reset from "styled-reset";
 import Helmet from "react-helmet";
-import { StaticQuery, graphql } from "gatsby";
+import { StaticQuery, graphql, Link } from "gatsby";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../theme";
 
@@ -52,7 +52,9 @@ function Page({ children }) {
             <Helmet title={data.site.siteMetadata.title}>
               <html lang="en" />
             </Helmet>
-            <Masthead>{data.site.siteMetadata.title}</Masthead>
+            <Masthead>
+              <Link to="/">{data.site.siteMetadata.title}</Link>
+            </Masthead>
             <Content>{children}</Content>
             <Footer>Footer</Footer>
           </>

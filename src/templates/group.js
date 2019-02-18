@@ -3,11 +3,8 @@ import React from "react";
 import Page from "../components/Page";
 import Img from "gatsby-image";
 import { H1, H2, Intro, Content } from "../components/Typography";
-// import { Hero } from "../components/layout/Hero";
-import { Narrow, Wide } from "../components/layout";
+import { Narrow, Wide } from "../components/Layout";
 import styled from "styled-components";
-// import { Grid, GridItem } from "styled-grid-responsive";
-// import Img from "gatsby-image";
 
 // const Person = styled.div`
 //   margin-bottom: 1rem;

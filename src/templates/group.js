@@ -3,19 +3,17 @@ import React from "react";
 import Page from "../components/Page";
 import Img from "gatsby-image";
 import { H1, H2, Intro, Content } from "../components/Typography";
-// import { Hero } from "../components/layout/Hero";
-import { Narrow, Wide } from "../components/layout";
+import { Narrow } from "../components/Layout";
 import styled from "styled-components";
-// import { Grid, GridItem } from "styled-grid-responsive";
-// import Img from "gatsby-image";
+import { Flex, Box } from "@rebass/grid";
 
-// const Person = styled.div`
-//   margin-bottom: 1rem;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-// `;
+const Person = styled(Box)`
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Image = styled(Img)`
   width: 10rem;
@@ -28,24 +26,23 @@ const Image = styled(Img)`
   margin-bottom: 1rem;
 `;
 
-// const Name = styled.p`
-//   color: #fecc02;
-//   font-family: Raleway;
-//   font-weight: 700;
-//   margin: 0;
-// `;
+const Name = styled.p`
+  color: ${props => props.theme.pop};
+  font-weight: 700;
+  margin: 0;
+`;
 
-// const Role = styled.p`
-//   font-family: Raleway;
-//   margin: 0;
-// `;
+const Role = styled.p`
+  font-family: Raleway;
+  margin: 0;
+`;
 
-// const Study = styled.p`
-//   font-family: Raleway;
-//   font-size: 0.8rem;
-//   margin: 0;
-//   opacity: 0.5;
-// `;
+const Study = styled.p`
+  font-family: Raleway;
+  font-size: 0.8rem;
+  margin: 0;
+  opacity: 0.5;
+`;
 
 export default function Group({ data }) {
   const group = data.contentfulGroup;
@@ -64,18 +61,19 @@ export default function Group({ data }) {
           }}
         />
         <H2>Vi är Pepp {group.title}</H2>
+        <Flex>
+          {group.persons.map(person => {
+            return (
+              <Person key={person.name} width={1 / 3}>
+                <Image fluid={person.image.fluid} />
+                <Name>{person.name}</Name>
+                <Role>{person.role}</Role>
+                <Study>{person.education}</Study>
+              </Person>
+            );
+          })}
+        </Flex>
       </Narrow>
-      <Wide>
-        {group.persons.map(person => {
-          return (
-            <div key={person.name}>
-              <Image fluid={person.image.fluid} />
-              <p>{person.name}</p>
-              <p>{person.title}</p>
-            </div>
-          );
-        })}
-      </Wide>
     </Page>
   );
 }
@@ -96,7 +94,8 @@ export const groupPageQuery = graphql`
       }
       persons {
         name
-        title
+        role
+        education
         image {
           fluid(maxWidth: 1024) {
             src

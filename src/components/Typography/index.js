@@ -1,16 +1,20 @@
 import styled from "styled-components";
 
 export const Intro = styled.p`
-  font-size: 1.2em;
-  line-height: 1.6em;
-  font-weight: 900;
+  font-size: 1.5em;
+  line-height: 1.4em;
+  font-weight: 700;
+  margin-bottom: 50px;
+
   color: ${props => props.theme.text};
 `;
 
 export const P = styled.p`
-  font-size: 1.2em;
-  line-height: 1.6em;
   color: ${props => props.theme.text};
+  font-family: "Open Sans";
+  line-height: 1.5;
+  font-size: 1.2em;
+  margin-bottom: 10px;
 `;
 
 export const Meta = styled.p`

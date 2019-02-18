@@ -1,13 +1,9 @@
 import React from "react";
 import Page from "../components/Page";
-// import { H1, H2, P, Intro } from "../components/typography";
-// import { Hero } from "../components/layout/Hero";
-// import { Narrow } from "../components/layout";
 import styled from "styled-components";
-// import { Grid, GridItem } from "styled-grid-responsive";
 import Img from "gatsby-image";
 import moment from "moment";
-import { Wide, Center, Narrow } from "../components/layout";
+import { Wide, Center, Narrow } from "../components/Layout";
 import { H1, Intro, Content } from "../components/Typography";
 
 const Image = styled(Img)`
@@ -80,7 +76,7 @@ export const blogPostPageQuery = graphql`
       }
       author {
         name
-        title
+        role
         image {
           fluid(maxWidth: 1024) {
             src

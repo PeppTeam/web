@@ -11,5 +11,6 @@ export const theme = {
   text: "rgba(53,60,62,0.75)",
   meta: "rgba(53,60,62,0.5)",
   primary: "#767CE0",
+  pop: brand.yellow,
   link: brand.blue
 };

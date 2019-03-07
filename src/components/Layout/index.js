@@ -25,7 +25,8 @@ export const Wide = props => (
 );
 export const Section = props => (
   <Flex
-    px={2}
+    px={3}
+    my={[3, 4, 5]}
     alignItems="center"
     flexDirection="column"
     {...props}

@@ -9,12 +9,14 @@ const LogoLink = styled(Link)`
   height: 100px;
   margin: 20px;
 `;
-const Background = styled.div`
+const Background = styled.header`
   width: 100vw;
-  height: 30vh;
+  height: 200px;
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  z-index: 9999;
 `;
 
 const NavLink = styled(Link)`

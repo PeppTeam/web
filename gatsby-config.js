@@ -26,6 +26,8 @@ module.exports = {
       options: {
         fonts: ["Raleway:400,700,900", "Open Sans:400,700"]
       }
-    }
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`
   ]
 };

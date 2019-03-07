@@ -1,17 +1,36 @@
-import styled from "styled-components";
+import React from "react";
+import { Flex } from "@rebass/grid";
 
-export const Narrow = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-`;
+export const Narrow = props => (
+  <Flex
+    flexDirection="column"
+    {...props}
+    css={{
+      width: "100%",
 
-export const Wide = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-`;
+      maxWidth: "800px"
+    }}
+  />
+);
 
-export const Center = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+export const Wide = props => (
+  <Flex
+    flexDirection="column"
+    {...props}
+    css={{
+      width: "100%",
+      maxWidth: "1200px"
+    }}
+  />
+);
+export const Section = props => (
+  <Flex
+    px={2}
+    alignItems="center"
+    flexDirection="column"
+    {...props}
+    css={{
+      width: "100vw"
+    }}
+  />
+);

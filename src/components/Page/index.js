@@ -2,25 +2,10 @@ import React from "react";
 import styled, { injectGlobal } from "styled-components";
 import reset from "styled-reset";
 import Helmet from "react-helmet";
-import { StaticQuery, graphql, Link } from "gatsby";
+import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../theme";
-
-const Masthead = styled.header`
-  color: black;
-  padding: 20px;
-  font-size: 24px;
-  font-weight: bold;
-`;
-
-const Content = styled.section`
-  margin: auto;
-
-  & > h1 {
-    font-size: 28px;
-    font-weight: bold;
-  }
-`;
+import Header from "../Header/Header";
 
 const Footer = styled.footer`
   text-align: center;
@@ -52,10 +37,8 @@ function Page({ children }) {
             <Helmet title={data.site.siteMetadata.title}>
               <html lang="en" />
             </Helmet>
-            <Masthead>
-              <Link to="/">{data.site.siteMetadata.title}</Link>
-            </Masthead>
-            <Content>{children}</Content>
+            <Header />
+            {children}
             <Footer>Footer</Footer>
           </>
         </ThemeProvider>

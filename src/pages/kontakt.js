@@ -4,6 +4,7 @@ import { Flex, Box } from "@rebass/grid";
 import Page from "../components/Page";
 import { Wide } from "../components/Layout";
 import styled from "styled-components";
+import { FullHero } from "../components/Layout/Hero";
 
 const StyledGroupCard = styled.div`
   margin: 1em 1em;
@@ -13,6 +14,8 @@ const StyledGroupCard = styled.div`
   justify-content: center;
   flex-direction: column;
   font-family: Raleway;
+  background-color: white;
+  border-radius: 8px;
 `;
 
 const Name = styled.p`
@@ -65,21 +68,23 @@ const ContactPage = () => (
     `}
     render={({ allContentfulGroup }) => (
       <Page>
-        <Wide>
-          <Flex>
-            {allContentfulGroup.edges.map(({ node }) => {
-              return (
-                <Box width={1 / 3} key={node.name}>
-                  <GroupCard
-                    name={node.title}
-                    url={node.slug}
-                    mail={node.mail}
-                  />
-                </Box>
-              );
-            })}
-          </Flex>
-        </Wide>
+        <FullHero>
+          <Wide>
+            <Flex flexWrap="wrap" width="100%" alignItems="center">
+              {allContentfulGroup.edges.map(({ node }) => {
+                return (
+                  <Box width={1 / 3} key={node.name}>
+                    <GroupCard
+                      name={node.title}
+                      url={node.slug}
+                      mail={node.mail}
+                    />
+                  </Box>
+                );
+              })}
+            </Flex>
+          </Wide>
+        </FullHero>
       </Page>
     )}
   />

@@ -3,7 +3,7 @@ import Page from "../components/Page";
 import styled from "styled-components";
 import Img from "gatsby-image";
 import moment from "moment";
-import { Wide, Center, Narrow } from "../components/Layout";
+import { Wide, Section, Narrow } from "../components/Layout";
 import { H1, Intro, Content } from "../components/Typography";
 
 const Image = styled(Img)`
@@ -16,8 +16,8 @@ export default function BlogPost({ data }) {
   const post = data.contentfulBlogPost;
   return (
     <Page>
-      <Narrow>
-        <Center>
+      <Section>
+        <Narrow>
           <H1>{post.title}</H1>
           <div>
             {post.tags.map(tag => {
@@ -26,28 +26,28 @@ export default function BlogPost({ data }) {
           </div>
 
           <p> {moment(post.publishDate).format("L")}</p>
-        </Center>
-      </Narrow>
-      <Wide>
-        <Image fluid={post.heroImage.fluid} />
-      </Wide>
-      <Narrow>
-        <Intro
-          dangerouslySetInnerHTML={{
-            __html: post.description.childMarkdownRemark.html
-          }}
-        />
-        <Content
-          dangerouslySetInnerHTML={{
-            __html: post.body.childMarkdownRemark.html
-          }}
-        />
-        <div>
-          <Image fluid={post.author.image.fluid} />
+        </Narrow>
+        <Wide>
+          <Image fluid={post.heroImage.fluid} />
+        </Wide>
+        <Narrow>
+          <Intro
+            dangerouslySetInnerHTML={{
+              __html: post.description.childMarkdownRemark.html
+            }}
+          />
+          <Content
+            dangerouslySetInnerHTML={{
+              __html: post.body.childMarkdownRemark.html
+            }}
+          />
+          <div>
+            <Image fluid={post.author.image.fluid} />
 
-          <h2>{post.author.name}</h2>
-        </div>
-      </Narrow>
+            <h2>{post.author.name}</h2>
+          </div>
+        </Narrow>
+      </Section>
     </Page>
   );
 }

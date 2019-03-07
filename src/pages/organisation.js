@@ -1,11 +1,12 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { Flex, Box } from "@rebass/grid";
+import { Flex } from "@rebass/grid";
 import Page from "../components/Page";
-import { Wide, Narrow } from "../components/Layout";
+import { Section, Wide } from "../components/Layout";
 import styled from "styled-components";
-import { H1, P } from "../components/Typography";
+import { H1, P, Intro, H2 } from "../components/Typography";
 import Img from "gatsby-image";
+import { Hero } from "../components/Layout/Hero";
 
 const Image = styled(Img)`
   width: 10rem;
@@ -26,6 +27,11 @@ const ContactPage = () => (
           edges {
             node {
               title
+              text {
+                childMarkdownRemark {
+                  html
+                }
+              }
               persons {
                 name
                 role
@@ -45,40 +51,42 @@ const ContactPage = () => (
     `}
     render={({ allContentfulOrganisation }) => (
       <Page>
-        <Wide>
-          <Narrow>
-            <H1>Organisation</H1>
-            <P>
-              Pepps styrelse består av personer från olika delar av landet med
-              olika erfarenheter som alla brinner för Pepps vision. Vissa av oss
-              pluggar fortfarande och andra har varit ute i arbetslivet ett par
-              år men vi har alla någon koppling till tekniska studier och
-              ingenjörsyrket. Vårt arbete går ut på att samordna
-              projektgruppernas arbete ute i städerna och ge dem
-              förutsättningarna de behöver för att kunna driva peppande
-              mentorsprogram. Vi arbetar även strategiskt med etablering i nya
-              städer, utveckling av vårt koncept samt vår visuella identitet.
-            </P>
-          </Narrow>
-          {allContentfulOrganisation.edges.map(({ node }) => {
-            return (
-              <>
-                <p>{node.title}</p>
-                <Flex>
-                  {node.persons.map(person => {
-                    return (
-                      <Box width={512} px={2} key={node.name}>
-                        <Image fluid={person.image.fluid} />
-                        <P>{person.name}</P>
-                        <P>{person.role}</P>
-                      </Box>
-                    );
-                  })}
-                </Flex>
-              </>
-            );
-          })}
-        </Wide>
+        <Hero>
+          <H1>Organisation</H1>
+          <Intro>Om vår organisation</Intro>
+        </Hero>
+        <Section>
+          <Wide>
+            {allContentfulOrganisation.edges.map(({ node }) => {
+              return (
+                <>
+                  <H2>{node.title}</H2>
+                  <P
+                    dangerouslySetInnerHTML={{
+                      __html: node.text.childMarkdownRemark.html
+                    }}
+                  />
+                  <Flex flexWrap="wrap" width="100%" alignItems="center">
+                    {node.persons.map(person => {
+                      return (
+                        <Flex
+                          width={[1 / 2, 1 / 3]}
+                          alignItems="center"
+                          flexDirection="column"
+                          justifyContent="center"
+                        >
+                          <Image fluid={person.image.fluid} />
+                          <P>{person.name}</P>
+                          <P>{person.role}</P>
+                        </Flex>
+                      );
+                    })}
+                  </Flex>
+                </>
+              );
+            })}
+          </Wide>
+        </Section>
       </Page>
     )}
   />

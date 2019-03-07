@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Intro = styled.p`
-  font-size: 1.5em;
-  line-height: 1.4em;
-  font-weight: 700;
-  margin-bottom: 50px;
-
-  color: ${props => props.theme.text};
+  font-size: 1.4em;
+  line-height: 1.5em;
+  max-width: 800px;
+  opacity: 0.9;
+  color: ${props => props.theme.white};
 `;
 
 export const P = styled.p`
@@ -27,8 +26,9 @@ export const Meta = styled.p`
 
 export const H1 = styled.h1`
   font-size: 3em;
-  color: ${props => props.theme.body};
+  color: ${props => props.theme.white};
   font-weight: 900;
+  margin-bottom: 30px;
 `;
 export const H2 = styled.h2`
   font-size: 2.25em;

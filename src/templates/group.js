@@ -3,9 +3,10 @@ import React from "react";
 import Page from "../components/Page";
 import Img from "gatsby-image";
 import { H1, H2, Intro, Content } from "../components/Typography";
-import { Narrow } from "../components/Layout";
+import { Section, Narrow } from "../components/Layout";
 import styled from "styled-components";
 import { Flex, Box } from "@rebass/grid";
+import { Hero } from "../components/Layout/Hero";
 
 const Person = styled(Box)`
   margin-bottom: 1rem;
@@ -48,32 +49,36 @@ export default function Group({ data }) {
   const group = data.contentfulGroup;
   return (
     <Page>
-      <Narrow>
+      <Hero>
         <H1>{group.title}</H1>
         <Intro
           dangerouslySetInnerHTML={{
             __html: group.intro.childMarkdownRemark.html
           }}
         />
-        <Content
-          dangerouslySetInnerHTML={{
-            __html: group.body.childMarkdownRemark.html
-          }}
-        />
-        <H2>Vi är Pepp {group.title}</H2>
-        <Flex>
-          {group.persons.map(person => {
-            return (
-              <Person key={person.name} width={1 / 3}>
-                <Image fluid={person.image.fluid} />
-                <Name>{person.name}</Name>
-                <Role>{person.role}</Role>
-                <Study>{person.education}</Study>
-              </Person>
-            );
-          })}
-        </Flex>
-      </Narrow>
+      </Hero>
+      <Section>
+        <Narrow>
+          <Content
+            dangerouslySetInnerHTML={{
+              __html: group.body.childMarkdownRemark.html
+            }}
+          />
+          <H2>Vi är Pepp {group.title}</H2>
+          <Flex>
+            {group.persons.map(person => {
+              return (
+                <Person key={person.name} width={1 / 3}>
+                  <Image fluid={person.image.fluid} />
+                  <Name>{person.name}</Name>
+                  <Role>{person.role}</Role>
+                  <Study>{person.education}</Study>
+                </Person>
+              );
+            })}
+          </Flex>
+        </Narrow>
+      </Section>
     </Page>
   );
 }

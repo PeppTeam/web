@@ -18,8 +18,8 @@ export const LandingHero = styled(Hero)`
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 60vh;
-  background: url(${LandingBackground})
+  height: 80vh;
+  background: url(${LandingBackground});
   background-size: cover;
   background-position: center center;
 `;

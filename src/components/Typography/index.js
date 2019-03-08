@@ -17,8 +17,8 @@ export const P = styled.p`
 `;
 
 export const Meta = styled.p`
-  font-size: 0.6em;
-  font-weight: 900;
+  font-size: 0.75em;
+  font-weight: 700;
   line-height: 1.6em;
   color: ${props => props.theme.meta};
   text-transform: uppercase;

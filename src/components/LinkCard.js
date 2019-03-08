@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { Link } from "gatsby";
 
 export const LinkCard = styled(Link)`
@@ -10,11 +9,19 @@ export const LinkCard = styled(Link)`
   text-decoration: none;
   font-family: Raleway;
   font-weight: 700;
-  color: white;
   background-color: ${props => props.theme.body};
   border-radius: 4px;
-
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 3rem;
   &:hover {
-    font-size: 1.3em;
+    font-size: 3.2em;
   }
+`;
+
+export const PurpleLinkCard = styled(LinkCard)`
+  background-color: ${props => props.theme.purple};
+`;
+
+export const BlueLinkCard = styled(LinkCard)`
+  background-color: ${props => props.theme.blue};
 `;

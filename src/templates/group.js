@@ -2,7 +2,7 @@ import React from "react";
 // import { Link, graphql } from "gatsby";
 import Page from "../components/Page";
 import Img from "gatsby-image";
-import { H1, H2, Intro, Content } from "../components/Typography";
+import { H1, Intro, Content } from "../components/Typography";
 import { Section, Wide, Narrow } from "../components/Layout";
 import styled from "styled-components";
 import { Flex, Box } from "@rebass/grid";

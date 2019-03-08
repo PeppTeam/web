@@ -13,6 +13,7 @@ export const theme = {
   primary: brand.purple,
   pop: brand.yellow,
   link: brand.blue,
+  blue: brand.blue,
   purple: brand.purple,
   red: brand.red,
   green: brand.green

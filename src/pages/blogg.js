@@ -2,9 +2,20 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import moment from "moment";
 import Page from "../components/Page";
-import { Section } from "../components/Layout";
-import { H1 } from "../components/Typography";
+import { Section, Wide } from "../components/Layout";
+import { H1, P } from "../components/Typography";
 import { Hero } from "../components/Layout/Hero";
+import { Flex, Box } from "@rebass/grid";
+import Img from "gatsby-image";
+import styled from "styled-components";
+
+import { Link } from "gatsby";
+
+const Image = styled(Img)`
+  margin-bottom: 1rem;
+  height: auto;
+`;
+
 const BlogPage = () => (
   <StaticQuery
     query={graphql`
@@ -13,10 +24,14 @@ const BlogPage = () => (
           edges {
             node {
               title
+              slug
               publishDate
               heroImage {
-                file {
-                  url
+                fluid(maxWidth: 1024) {
+                  src
+                  srcSet
+                  sizes
+                  aspectRatio
                 }
               }
               body {
@@ -35,17 +50,21 @@ const BlogPage = () => (
           <H1>Blogg</H1>
         </Hero>
         <Section>
-          {allContentfulBlogPost.edges.map(({ node }) => {
-            return (
-              <div>
-                <p>Created on {moment(node.publishDate).format("L")}</p>
-                <img
-                  src={node.heroImage.file.url}
-                  alt={node.heroImage.file.fileName}
-                />
-              </div>
-            );
-          })}
+          <Wide alignItems="center">
+            <Flex width="100%" flexWrap="wrap" justifyContent="center">
+              {allContentfulBlogPost.edges.map(({ node }) => {
+                return (
+                  <Box width={[1 / 2]}>
+                    <Link to={`blogg/${node.slug}`}>
+                      <Image fluid={node.heroImage.fluid} />
+                      <P>{node.title}</P>
+                    </Link>
+                    <P>Created on {moment(node.publishDate).format("L")}</P>{" "}
+                  </Box>
+                );
+              })}
+            </Flex>
+          </Wide>
         </Section>
       </Page>
     )}

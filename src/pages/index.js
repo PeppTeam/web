@@ -54,8 +54,8 @@ export const Button = styled(Box)`
   display: inline-block;
   font-size: 2rem;
   font-weight: 700;
-  border-radius: 16px;
-  color: ${props => props.theme.body};
+  border-radius: 4px;
+  color: ${props => props.theme.white};
 `;
 
 export default function HomePage({ data }) {

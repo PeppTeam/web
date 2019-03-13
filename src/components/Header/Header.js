@@ -50,6 +50,8 @@ const Header = () => (
           <NavLink to="/om-pepp">Om Pepp</NavLink>
           <NavLink to="/ansok">Vill du vara med?</NavLink>
           <NavLink to="/samarbete">Samarbete</NavLink>
+          <NavLink to="/blogg">Blogg</NavLink>
+
         </div>
       </div>
     </Wide>

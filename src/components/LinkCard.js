@@ -9,7 +9,7 @@ export const LinkCard = styled(Link)`
   text-decoration: none;
   font-family: Raleway;
   font-weight: 700;
-  background-color: ${props => props.theme.body};
+  background-color: ${props => props.theme.pop};
   border-radius: 4px;
   color: rgba(255, 255, 255, 0.7);
   font-size: 3rem;

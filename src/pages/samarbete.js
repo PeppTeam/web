@@ -4,7 +4,7 @@ import Page from "../components/Page";
 import { Section, Narrow } from "../components/Layout";
 import { H1, P } from "../components/Typography";
 import { Flex, Box } from "@rebass/grid";
-import { LinkCard } from "../components/LinkCard";
+import { PurpleLinkCard, BlueLinkCard } from "../components/LinkCard";
 import { Hero } from "../components/Layout/Hero";
 // import styled from "styled-components";
 
@@ -34,11 +34,11 @@ const SamarbetePage = () => (
       </Narrow>
       <Narrow>
         <Flex>
-          <Box width={1 / 2}>
-            <LinkCard to="/kontakt">Kontakt</LinkCard>
+          <Box width={1 / 2} mr={3}>
+            <PurpleLinkCard to="/om-pepp">Om Pepp</PurpleLinkCard>
           </Box>
           <Box width={1 / 2}>
-            <LinkCard to="/om-pepp">Om oss</LinkCard>
+            <BlueLinkCard to="/kontakt">Kontakt</BlueLinkCard>
           </Box>
         </Flex>
       </Narrow>

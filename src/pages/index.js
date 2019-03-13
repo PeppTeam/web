@@ -4,10 +4,10 @@ import Page from "../components/Page";
 import styled from "styled-components";
 import { Section, Wide, Narrow } from "../components/Layout";
 import { Link } from "gatsby";
-import { LinkCard } from "../components/LinkCard";
+import { PurpleLinkCard, BlueLinkCard } from "../components/LinkCard";
 import { Flex, Box } from "@rebass/grid";
 import { LandingHero } from "../components/Layout/Hero";
-
+import { H1, H2, P, Meta } from "../components/Typography";
 const GroupCard = styled(Link)`
   display: flex;
   align-items: center;
@@ -45,6 +45,19 @@ export const Logo = styled.img`
   width: 100%;
 `;
 
+export const Button = styled(Box)`
+  background-color: ${props => props.theme.pop};
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 700;
+  border-radius: 4px;
+  color: ${props => props.theme.white};
+`;
+
 export default function HomePage({ data }) {
   const allPartners = data.allContentfulPartner.edges.filter(({ node }) => {
     return node.homePage === "Partner";
@@ -56,8 +69,33 @@ export default function HomePage({ data }) {
   return (
     <Page>
       <LandingHero>
-        <Link to="/join">Join</Link>
+        <Narrow alignItems="center">
+          <H1>Vi skapar nya förebilder och breddar synen på teknik</H1>
+        </Narrow>
+        <Link to="/ansok">
+          <Button p={2}>Bli medlem</Button>
+        </Link>
       </LandingHero>
+      <Section>
+        <Narrow>
+          <P>
+            Pepp är ett mentorsskapsprogram där du som tjej* får en mentor från
+            universitetet som hjälper dig upptäcka de oändliga möjligheterna
+            teknikbranschen har att erbjuda. Det spelar ingen roll om du är helt
+            oteknisk, väldigt teknikintresserad eller något däremellan. Pepp är
+            för alla oavsett bakgrund eller intressen!
+          </P>
+          <P>
+            Sedan starten 2013 har över 800 gymnasietjejer och
+            ingenjörsstudenter deltagit i Pepp som adepter, mentorer eller i
+            någon av våra projektgrupper.
+          </P>
+          <Meta>
+            * Pepp välkomnar alla som identifierar sig som tjejer och som går i
+            gymnasiet.
+          </Meta>
+        </Narrow>
+      </Section>
       <Section>
         <Wide>
           <Flex flexWrap="wrap" width="100%">
@@ -71,11 +109,13 @@ export default function HomePage({ data }) {
       </Section>
       <Section>
         <Wide>
-          <h2>Vi stöttar Pepp</h2>
+          <Box mb={4}>
+            <H2>Vi stödjer Pepp</H2>
+          </Box>
           <Flex flexWrap="wrap" width="100%" alignItems="center">
             {allPartners.map(({ node }) => {
               return (
-                <Box width={[1 / 3, 1 / 10]} p={10}>
+                <Box width={[1 / 3, 1 / 5, 1 / 8]} p={10}>
                   <a href={node.link}>
                     <Logo
                       src={node.logo.file.url}
@@ -90,7 +130,9 @@ export default function HomePage({ data }) {
       </Section>
       <Section>
         <Wide>
-          <h2>Våra vänner</h2>
+          <Box mb={4}>
+            <H2>Systerorganisationer</H2>
+          </Box>
           <Flex>
             {allFriends.map(({ node }) => {
               return (
@@ -110,12 +152,12 @@ export default function HomePage({ data }) {
 
       <Section>
         <Narrow>
-          <Flex width="100%">
-            <Box width={1 / 2} px={2}>
-              <LinkCard to="/om-pepp">Om Pepp →</LinkCard>
+          <Flex width="100%" flexDirection={["column", "row"]}>
+            <Box width={[1, 1 / 2]} px={2}>
+              <PurpleLinkCard to="/om-pepp">Om Pepp</PurpleLinkCard>
             </Box>
-            <Box width={1 / 2} px={2}>
-              <LinkCard to="/kontakt">Kontakt →</LinkCard>
+            <Box width={[1, 1 / 2]} px={2}>
+              <BlueLinkCard to="/kontakt">Kontakt</BlueLinkCard>
             </Box>
           </Flex>
         </Narrow>

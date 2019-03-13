@@ -4,7 +4,7 @@ import Page from "../components/Page";
 import { H1, P, Intro } from "../components/Typography";
 import { Quote } from "../components/Typography/Quote";
 import { Hero } from "../components/Layout/Hero";
-import { LinkCard } from "../components/LinkCard";
+import { PurpleLinkCard,BlueLinkCard } from "../components/LinkCard";
 import { Narrow, Section } from "../components/Layout";
 import { Flex, Box } from "@rebass/grid";
 
@@ -50,16 +50,16 @@ const PG = () => (
           Organisationen lockade verkligen till sig helt fantastiska personer."
           saidBy="Petter"
         />
-        <Narrow>
-          <Flex>
-            <Box width={1 / 2}>
-              <LinkCard to="/om-pepp">Om Pepp →</LinkCard>
-            </Box>
-            <Box width={1 / 2}>
-              <LinkCard to="/kontakt">Kontakt →</LinkCard>
-            </Box>
-          </Flex>
-        </Narrow>
+    <Narrow>
+        <Flex>
+          <Box width={1 / 2} mr={3}>
+            <PurpleLinkCard to="/om-pepp">Om Pepp</PurpleLinkCard>
+          </Box>
+          <Box width={1 / 2}>
+            <BlueLinkCard to="/kontakt">Kontakt</BlueLinkCard>
+          </Box>
+        </Flex>
+      </Narrow>
       </Section>
     </>
   </Page>

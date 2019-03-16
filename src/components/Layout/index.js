@@ -7,7 +7,6 @@ export const Narrow = props => (
     {...props}
     css={{
       width: "100%",
-
       maxWidth: "800px"
     }}
   />
@@ -26,7 +25,7 @@ export const Wide = props => (
 export const Section = props => (
   <Flex
     px={3}
-    my={[3, 4, 5]}
+    my={[3, 4, 6]}
     alignItems="center"
     flexDirection="column"
     {...props}

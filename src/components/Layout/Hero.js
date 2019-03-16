@@ -1,38 +1,22 @@
 import styled from "styled-components";
-import LandingBackground from "../../assets/background.svg";
 import BackgroundImage from "gatsby-background-image";
+import { Section } from "../Layout";
 
-export const Hero = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
+export const Hero = styled(Section)`
   margin-top: -200px;
   padding-top: 200px;
-  background-color: ${props => props.theme.primary};
+  align-items: center;
+  justify-content: center;
 `;
 
 export const LandingHero = styled(Hero)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 80vh;
-  background: url(${LandingBackground});
-  background-size: cover;
-  background-position: center center;
+  min-height: 80vh;
+  background-color: ${props => props.theme.gray};
 `;
 
 export const FullHero = styled(Hero)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 80vh;
-
-  background-color: ${props => props.theme.purple};
+  min-height: 100vh;
+  background-color: ${props => props.theme.gray};
 `;
 
 export const ImageHero = styled(BackgroundImage)`

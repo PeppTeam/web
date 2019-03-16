@@ -32,6 +32,8 @@ const SamarbetePage = () => (
           ingenjörer? Hör av er!
         </P>
       </Narrow>
+    </Section>
+    <Section>
       <Narrow>
         <Flex>
           <Box width={1 / 2} mr={3}>

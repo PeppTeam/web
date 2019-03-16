@@ -3,10 +3,11 @@ import { Link } from "gatsby";
 import Logo from "../Logo";
 import styled from "styled-components";
 import { Wide } from "../Layout";
+import { Flex } from "@rebass/grid";
 
 const LogoLink = styled(Link)`
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   margin: 20px;
 `;
 const Background = styled.header`
@@ -20,7 +21,7 @@ const Background = styled.header`
 `;
 
 const NavLink = styled(Link)`
-color: white;
+color: ${props => props.theme.body}
 font-family: Raleway;
 text-decoration: none;
 padding: 0 10px;
@@ -28,21 +29,22 @@ font-weight: 700;
 z-index: 9999;
 opacity: 0.9;
 
+&:visited {
+  color: ${props => props.theme.body}
+}
+
 &:hover {
-  opacity: 0.8
+  color: ${props => props.theme.text}
+
+}
+
+
 `;
 
 const Header = () => (
   <Background>
     <Wide>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
+      <Flex flexDirection="column" justifyContent="center" alignItems="center">
         <LogoLink to="/">
           <Logo />
         </LogoLink>
@@ -51,9 +53,8 @@ const Header = () => (
           <NavLink to="/ansok">Vill du vara med?</NavLink>
           <NavLink to="/samarbete">Samarbete</NavLink>
           <NavLink to="/blogg">Blogg</NavLink>
-
         </div>
-      </div>
+      </Flex>
     </Wide>
   </Background>
 );

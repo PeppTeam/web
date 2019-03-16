@@ -4,14 +4,16 @@ import styled from "styled-components";
 import Img from "gatsby-image";
 import moment from "moment";
 import { Wide, Section, Narrow } from "../components/Layout";
-import { H1, P,Intro, Content } from "../components/Typography";
+import { H1, P, Intro, Content } from "../components/Typography";
 import { Hero } from "../components/Layout/Hero";
+import { Tag } from "../components/blog/Tag";
+import { Flex } from "@rebass/grid";
 
-const Image  = styled(Img)`
+const Image = styled(Img)`
 width: auto
 margin-bottom: 10rem;
 
-`
+`;
 
 const AuthorImage = styled(Img)`
   width: 100px;
@@ -24,19 +26,28 @@ const AuthorImage = styled(Img)`
   margin-bottom: 1rem;
 `;
 
+const Date = styled.p`
+  color: ${props => props.theme.white};
+  opacity: 0.6;
+`;
+
 export default function BlogPost({ data }) {
   const post = data.contentfulBlogPost;
   return (
     <Page>
       <Hero>
         <Narrow mb={4}>
-          <H1>{post.title}</H1>
-          <Intro>
-            Tags: {post.tags.map(tag => {
-              return <p key={tag}>{tag}</p>;
+          <Flex flexDirection="row">
+            {post.tags.map(tag => {
+              return (
+                <Tag p={2} ml={0} m={2}>
+                  {tag}
+                </Tag>
+              );
             })}
-          </Intro>
-          <Intro> {moment(post.publishDate).format("L")}</Intro>
+          </Flex>
+          <H1>{post.title}</H1>
+          <Date> {moment(post.publishDate).format("LL", "fr")}</Date>
           <Intro
             dangerouslySetInnerHTML={{
               __html: post.description.childMarkdownRemark.html
@@ -46,12 +57,10 @@ export default function BlogPost({ data }) {
       </Hero>
       <Section>
         <Wide>
-          <Image
-            fluid={post.heroImage.fluid}
-          />
+          <Image fluid={post.heroImage.fluid} />
         </Wide>
-        </Section>
-        <Section>
+      </Section>
+      <Section>
         <Narrow>
           <Content
             dangerouslySetInnerHTML={{
@@ -61,7 +70,7 @@ export default function BlogPost({ data }) {
         </Narrow>
       </Section>
       <Section>
-      <AuthorImage fluid={post.author.image.fluid} />
+        <AuthorImage fluid={post.author.image.fluid} />
         <P>{post.author.name}</P>
       </Section>
     </Page>
@@ -94,7 +103,7 @@ export const blogPostPageQuery = graphql`
         name
         role
         image {
-          fluid(maxWidth: 1024) {
+          fluid {
             src
             srcSet
             sizes

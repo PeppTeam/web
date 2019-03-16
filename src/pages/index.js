@@ -8,25 +8,7 @@ import { PurpleLinkCard, BlueLinkCard } from "../components/LinkCard";
 import { Flex, Box } from "@rebass/grid";
 import { LandingHero } from "../components/Layout/Hero";
 import { H1, H2, P, Meta } from "../components/Typography";
-const GroupCard = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  width: 100%;
-  text-decoration: none;
-  font-family: Raleway;
-  font-weight: 700;
-  color: ${props => props.theme.purple};
-  border-radius: 4px;
-  font-size: 2em;
-  transition: all 0.1s ease-in-out;
-
-  &:hover {
-    transform: scale(1.2);
-    color: ${props => props.theme.yellow};
-  }
-`;
+import { Card, ColorCard } from "../components/Card/Card";
 
 export const Container = styled.div`
   display: flex;
@@ -98,11 +80,9 @@ export default function HomePage({ data }) {
       </Section>
       <Section>
         <Wide>
-          <Flex flexWrap="wrap" width="100%">
+          <Flex flexWrap="wrap" width="100%" m={-2}>
             {allGroups.map(({ node }) => (
-              <Box width={[1 / 2, 1 / 3]}>
-                <GroupCard to={node.slug}>{node.title}</GroupCard>
-              </Box>
+              <Card title={node.title} slug={node.slug} />
             ))}
           </Flex>
         </Wide>
@@ -112,10 +92,10 @@ export default function HomePage({ data }) {
           <Box mb={4}>
             <H2>Vi stödjer Pepp</H2>
           </Box>
-          <Flex flexWrap="wrap" width="100%" alignItems="center">
+          <Flex flexWrap="wrap" width="100%" alignItems="center" m={-3}>
             {allPartners.map(({ node }) => {
               return (
-                <Box width={[1 / 3, 1 / 5, 1 / 8]} p={10}>
+                <Box width={[1 / 3, 1 / 5, 1 / 8]} p={4}>
                   <a href={node.link}>
                     <Logo
                       src={node.logo.file.url}
@@ -153,12 +133,9 @@ export default function HomePage({ data }) {
       <Section>
         <Narrow>
           <Flex width="100%" flexDirection={["column", "row"]}>
-            <Box width={[1, 1 / 2]} px={2}>
-              <PurpleLinkCard to="/om-pepp">Om Pepp</PurpleLinkCard>
-            </Box>
-            <Box width={[1, 1 / 2]} px={2}>
-              <BlueLinkCard to="/kontakt">Kontakt</BlueLinkCard>
-            </Box>
+            <ColorCard to="/om-pepp" title="Om Pepp" />
+
+            <ColorCard to="/kontakt" title="Kontakt" />
           </Flex>
         </Narrow>
       </Section>

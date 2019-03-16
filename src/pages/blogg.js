@@ -1,74 +1,97 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import moment from "moment";
 import Page from "../components/Page";
 import { Section, Wide } from "../components/Layout";
-import { H1, P } from "../components/Typography";
-import { Hero } from "../components/Layout/Hero";
 import { Flex, Box } from "@rebass/grid";
 import Img from "gatsby-image";
 import styled from "styled-components";
-
 import { Link } from "gatsby";
+import { Tag } from "../components/blog/Tag";
 
 const Image = styled(Img)`
-  margin-bottom: 1rem;
   height: auto;
+  border-radius: 8px;
 `;
 
-const BlogPage = () => (
-  <StaticQuery
-    query={graphql`
-      query BlogPage {
-        allContentfulBlogPost {
-          edges {
-            node {
-              title
-              slug
-              publishDate
-              heroImage {
-                fluid(maxWidth: 1024) {
-                  src
-                  srcSet
-                  sizes
-                  aspectRatio
+const Card = styled(Link)`
+  text-decoration: none;
+  font-family: Raleway;
+  color: ${props => props.theme.body};
+  font-size: 30px;
+  font-weight: 900;
+
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+`;
+
+function BlogPage() {
+  return (
+    <StaticQuery
+      query={graphql`
+        query BlogPage {
+          allContentfulBlogPost {
+            edges {
+              node {
+                title
+                slug
+                publishDate
+                tags
+                heroImage {
+                  fluid(maxWidth: 1024) {
+                    src
+                    srcSet
+                    sizes
+                    aspectRatio
+                  }
                 }
-              }
-              body {
-                childMarkdownRemark {
-                  html
+                body {
+                  childMarkdownRemark {
+                    html
+                  }
                 }
               }
             }
           }
         }
-      }
-    `}
-    render={({ allContentfulBlogPost }) => (
-      <Page>
-        <Hero>
-          <H1>Blogg</H1>
-        </Hero>
-        <Section>
-          <Wide alignItems="center">
-            <Flex width="100%" flexWrap="wrap" justifyContent="center">
-              {allContentfulBlogPost.edges.map(({ node }) => {
-                return (
-                  <Box width={[1 / 2]}>
-                    <Link to={`blogg/${node.slug}`}>
-                      <Image fluid={node.heroImage.fluid} />
-                      <P>{node.title}</P>
-                    </Link>
-                    <P>Created on {moment(node.publishDate).format("L")}</P>{" "}
-                  </Box>
-                );
-              })}
-            </Flex>
-          </Wide>
-        </Section>
-      </Page>
-    )}
-  />
-);
+      `}
+      render={({ allContentfulBlogPost, props }) => (
+        <Page>
+          <Section>
+            <Wide alignItems="center">
+              <Flex
+                width="100%"
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                mx={-3}
+              >
+                {allContentfulBlogPost.edges.map(({ node }) => {
+                  return (
+                    <Box width={[1 / 2]} p={3}>
+                      <Card to={`blogg/${node.slug}`}>
+                        <Image fluid={node.heroImage.fluid} />
+                        <Flex flexDirection="row">
+                          {node.tags.map(tag => {
+                            return (
+                              <Tag p={2} ml={0} m={2}>
+                                {tag}
+                              </Tag>
+                            );
+                          })}
+                        </Flex>
 
+                        <h2>{node.title}</h2>
+                      </Card>
+                    </Box>
+                  );
+                })}
+              </Flex>
+            </Wide>
+          </Section>
+        </Page>
+      )}
+    />
+  );
+}
 export default BlogPage;

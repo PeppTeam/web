@@ -9,14 +9,14 @@ const About = () => (
     <Hero>
       <Narrow alignItems="center">
         <H1>What is Pepp?</H1>
-      </Narrow>
-    </Hero>
-    <Section>
-      <Narrow>
         <Intro>
           Pepp is a mentoring program that intends to inspire more girls and
           young women to immerse themselves in technical studies.
         </Intro>
+      </Narrow>
+    </Hero>
+    <Section>
+      <Narrow>
         <P>
           Pepp strives to encourage, challenge stereotypes and show the endless
           possibilities that engineering can offer. By gathering girls in upper

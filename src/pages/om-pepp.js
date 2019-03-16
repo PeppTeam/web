@@ -45,9 +45,7 @@ const About = () => (
           att skapa nya förebilder och bredda synen på hur kul tekniska studier
           kan vara!
         </P>
-        <BigQuote>
-          "Pepp utmanar bilden av vem som kan studera eller jobba med teknik"
-        </BigQuote>
+        <BigQuote statement="Pepp utmanar bilden av vem som kan studera eller jobba med teknik" />
         <P>
           Pepp vill ge utrymme åt kvinnliga förebilder inom teknik- och
           ingenjörsvärlden för att väcka intresse, utmana fördomar och visa de

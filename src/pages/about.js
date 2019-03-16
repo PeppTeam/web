@@ -1,4 +1,5 @@
 import React from "react";
+import { Box } from "@rebass/grid";
 
 import Page from "../components/Page";
 import { H1, P, Intro } from "../components/Typography";
@@ -8,15 +9,17 @@ const About = () => (
   <Page>
     <Hero>
       <Narrow alignItems="center">
-        <H1>What is Pepp?</H1>
-      </Narrow>
-    </Hero>
-    <Section>
-      <Narrow>
+        <Box mb={4}>
+          <H1>What is Pepp?</H1>
+        </Box>
         <Intro>
           Pepp is a mentoring program that intends to inspire more girls and
           young women to immerse themselves in technical studies.
         </Intro>
+      </Narrow>
+    </Hero>
+    <Section>
+      <Narrow>
         <P>
           Pepp strives to encourage, challenge stereotypes and show the endless
           possibilities that engineering can offer. By gathering girls in upper

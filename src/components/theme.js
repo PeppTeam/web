@@ -6,10 +6,12 @@ const brand = {
   green: "#006a2d"
 };
 export const theme = {
-  body: "rgb(53,60,62)",
+  body: "rgb(0,0,0)",
   white: "#ffffff",
-  text: "rgba(53,60,62,0.75)",
-  meta: "rgba(53,60,62,0.5)",
+  text: "rgb(83, 98, 124)",
+  shade: "rgba(83, 98, 124, 0.5)",
+  gray: "#F9F9F9",
+  meta: "rgba(83, 98, 124,0.5)",
   primary: brand.purple,
   pop: brand.yellow,
   link: brand.blue,

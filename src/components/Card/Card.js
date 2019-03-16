@@ -1,16 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { Box } from "@rebass/grid";
+import { Box, Flex } from "@rebass/grid";
 import { Link } from "gatsby";
+import { P, Meta, H2, H3 } from "../Typography";
+import Img from "gatsby-image";
 
 export const CardLayout = props => (
-  <Box
-    p={[4, 5]}
-    justifyContent="center"
-    alignItems="center"
-    {...props}
-    css={{}}
-  />
+  <Flex p={[4, 5]} justifyContent="center" alignItems="center" {...props} />
 );
 
 const StyledShade = styled(CardLayout)`
@@ -66,6 +62,75 @@ export const ColorCard = ({ title, slug }) => {
       <StyledLink to={slug}>
         <StyledColor>{title}</StyledColor>
       </StyledLink>
+    </Box>
+  );
+};
+
+const StyledContact = styled(StyledShade)`
+  font-size: 1em;
+  background-color: ${props => props.theme.white};
+`;
+
+export const ContactCard = ({ title, mail }) => {
+  return (
+    <Box width={[1, 1 / 2, null, 1 / 3]} p={[2, 4]}>
+      <StyledContact flexDirection="column">
+        <H2>{title}</H2>
+        <P>{mail}</P>
+      </StyledContact>
+    </Box>
+  );
+};
+
+const StyledPerson = styled(CardLayout)`
+  background-color: ${props => props.theme.white};
+  width: 100%;
+`;
+
+const Name = styled.p`
+  color: ${props => props.theme.pop};
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 12px;
+`;
+
+const Role = styled.p`
+  color: ${props => props.theme.text};
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-align: center;
+`;
+
+const Email = styled.p`
+  color: ${props => props.theme.meta};
+  font-weight: 700;
+  font-size: 0.8em;
+  text-align: center;
+`;
+
+const Image = styled(Img)`
+  width: 15rem;
+  height: 15rem;
+  background-size: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.03) 0px 2px 12px 0px;
+`;
+
+export const PersonCard = ({ image, name, role, email }) => {
+  return (
+    <Box width={[1, 1 / 2, 1 / 3]}>
+      <StyledPerson flexDirection="column">
+        <Image fluid={image.fluid} />
+        <Box justifyContent="center">
+          <Name>{name}</Name>
+          <Role>{role}</Role>
+          <Email>{email}</Email>
+        </Box>
+      </StyledPerson>
     </Box>
   );
 };

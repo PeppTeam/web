@@ -7,7 +7,7 @@ import { Section, Wide, Narrow } from "../components/Layout";
 import styled from "styled-components";
 import { Flex, Box } from "@rebass/grid";
 import { ImageHero } from "../components/Layout/Hero";
-
+import { PersonCard } from "../components/Card/Card";
 const Person = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -78,18 +78,11 @@ export default function Group({ data }) {
           <Flex width="100%" flexWrap="wrap" justifyContent="center">
             {group.persons.map(person => {
               return (
-                <Person key={person.name} width={[1 / 2, 1 / 4]} mb={4}>
-                  <Image fluid={person.image.fluid} />
-                  <Name as="p" mb={2}>
-                    {person.name}
-                  </Name>
-                  <Role as="p" mb={1}>
-                    {person.role}
-                  </Role>
-                  <Study as="p" mb={1}>
-                    {person.education}
-                  </Study>
-                </Person>
+                <PersonCard
+                  image={person.image}
+                  name={person.name}
+                  role={person.role}
+                />
               );
             })}
           </Flex>

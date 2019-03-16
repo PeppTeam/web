@@ -26,11 +26,6 @@ const AuthorImage = styled(Img)`
   margin-bottom: 1rem;
 `;
 
-const PostH1 = styled(H1)`
-  text-align: center;
-  margin-bottom: 8px;
-`;
-
 const Date = styled.p`
   color: ${props => props.theme.text};
   opacity: 0.6;
@@ -53,7 +48,7 @@ export default function BlogPost({ data }) {
                 );
               })}
             </Flex>
-            <PostH1>{post.title}</PostH1>
+            <H1 center>{post.title}</H1>
             <Date> {moment(post.publishDate).format("LL", "fr")}</Date>
           </Box>
           <Intro

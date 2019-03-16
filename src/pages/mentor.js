@@ -35,12 +35,13 @@ const Mentor = () => (
             expert på att lyssna och bolla idéer samt få ta del av nätverket
             Pepp.
           </P>
+          <Quote
+            statement="För mig var mentorskapet mycket givande, jag fick energi av att kunna peppa någon och visa min adept att teknik inte bara är för killar.  Min adept och jag träffades och fikade, hon kom på studiebesök i min klass och jag visade henne runt på skolan en vanlig dag. Vi hade, och har fortfarande, kontakt via olika sociala medier."
+            cite="Klara"
+          />
         </Narrow>
-
-        <Quote
-          quote="För mig var mentorskapet mycket givande, jag fick energi av att kunna peppa någon och visa min adept att teknik inte bara är för killar.  Min adept och jag träffades och fikade, hon kom på studiebesök i min klass och jag visade henne runt på skolan en vanlig dag. Vi hade, och har fortfarande, kontakt via olika sociala medier."
-          saidBy="Klara"
-        />
+      </Section>
+      <Section>
         <Narrow>
           <Flex>
             <ColorCard slug="/om-pepp" title="Om Pepp" />

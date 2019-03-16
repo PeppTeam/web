@@ -50,8 +50,8 @@ export default function HomePage({ data }) {
   return (
     <Page>
       <LandingHero>
-        <Narrow alignItems="center">
-          <H1>Vi skapar nya förebilder och breddar synen på teknik</H1>
+        <Narrow alignItems="center" mb={4}>
+          <H1 center>Vi skapar nya förebilder och breddar synen på teknik</H1>
         </Narrow>
         <Link to="/ansok">
           <Button p={2}>Bli medlem</Button>

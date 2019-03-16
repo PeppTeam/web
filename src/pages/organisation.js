@@ -2,22 +2,10 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { Flex } from "@rebass/grid";
 import Page from "../components/Page";
-import { Section, Wide } from "../components/Layout";
-import styled from "styled-components";
-import { H1, P, Intro, H2 } from "../components/Typography";
-import Img from "gatsby-image";
+import { Section, Narrow, Wide } from "../components/Layout";
+import { H1, P, H2 } from "../components/Typography";
 import { Hero } from "../components/Layout/Hero";
-
-const Image = styled(Img)`
-  width: 10rem;
-  height: 10rem;
-  background-size: cover;
-  display: block;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  margin-bottom: 1rem;
-`;
+import { PersonCard } from "../components/Card/Card";
 
 const ContactPage = () => (
   <StaticQuery
@@ -35,6 +23,12 @@ const ContactPage = () => (
               persons {
                 name
                 role
+                email
+                shortBio {
+                  childMarkdownRemark {
+                    html
+                  }
+                }
                 image {
                   fluid(maxWidth: 1024) {
                     src
@@ -53,39 +47,44 @@ const ContactPage = () => (
       <Page>
         <Hero>
           <H1>Organisation</H1>
-          <Intro>Om vår organisation</Intro>
         </Hero>
         <Section>
-          <Wide>
-            {allContentfulOrganisation.edges.map(({ node }) => {
-              return (
-                <>
-                  <H2>{node.title}</H2>
-                  <P
-                    dangerouslySetInnerHTML={{
-                      __html: node.text.childMarkdownRemark.html
-                    }}
-                  />
-                  <Flex flexWrap="wrap" width="100%" alignItems="center">
+          {allContentfulOrganisation.edges.map(({ node }) => {
+            return (
+              <>
+                <Narrow mb={3}>
+                  <Flex mb={4} flexDirection="column">
+                    <H2>{node.title}</H2>
+                    <P
+                      dangerouslySetInnerHTML={{
+                        __html: node.text.childMarkdownRemark.html
+                      }}
+                    />
+                  </Flex>
+                </Narrow>
+                <Wide>
+                  <Flex
+                    flexWrap="wrap"
+                    width="100%"
+                    alignItems="flex-start"
+                    m={-2}
+                    justifyContent="stretch"
+                  >
                     {node.persons.map(person => {
                       return (
-                        <Flex
-                          width={[1 / 2, 1 / 3]}
-                          alignItems="center"
-                          flexDirection="column"
-                          justifyContent="center"
-                        >
-                          <Image fluid={person.image.fluid} />
-                          <P>{person.name}</P>
-                          <P>{person.role}</P>
-                        </Flex>
+                        <PersonCard
+                          name={person.name}
+                          role={person.role}
+                          image={person.image}
+                          email={person.email}
+                        />
                       );
                     })}
                   </Flex>
-                </>
-              );
-            })}
-          </Wide>
+                </Wide>
+              </>
+            );
+          })}
         </Section>
       </Page>
     )}

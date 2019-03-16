@@ -1,56 +1,11 @@
 import React from "react";
-import { StaticQuery, graphql, Link } from "gatsby";
-import { Flex, Box } from "@rebass/grid";
+import { StaticQuery, graphql } from "gatsby";
+import { Flex } from "@rebass/grid";
 import Page from "../components/Page";
 import { Wide } from "../components/Layout";
-import styled from "styled-components";
 import { FullHero } from "../components/Layout/Hero";
-
-const StyledGroupCard = styled.div`
-  margin: 1em 1em;
-  padding: 1em 1em;
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  flex-direction: column;
-  font-family: Raleway;
-  background-color: white;
-  border-radius: 8px;
-`;
-
-const Name = styled.p`
-  color: ${props => props.theme.body};
-  font-size: 1.5em;
-  font-weight: 700;
-  margin-bottom: 0;
-`;
-
-const CardLink = styled(Link)`
-  color: ${props => props.theme.text};
-  text-decoration: none;
-  &:hover {
-    transform: scale(1.1);
-    transition: transform 0.2s;
-    border-bottom: 1px solid ${props => props.theme.body};
-    color: ${props => props.theme.body};
-  }
-`;
-
-const CardMail = styled.a`
-  color: ${props => props.theme.meta};
-  margin-bottom: 1.5em;
-  font-size: 1.2em;
-  font-weight: 700;
-`;
-
-const GroupCard = ({ name, url, mail }) => (
-  <StyledGroupCard>
-    <Name>{name}</Name>
-    <CardMail>{mail}</CardMail>
-    <CardLink to={url}>Om Pepp {name}</CardLink>
-  </StyledGroupCard>
-);
-
+import { ContactCard } from "../components/Card/Card";
+import { H1, H2 } from "../components/Typography";
 const ContactPage = () => (
   <StaticQuery
     query={graphql`
@@ -59,7 +14,6 @@ const ContactPage = () => (
           edges {
             node {
               title
-              slug
               mail
             }
           }
@@ -70,17 +24,29 @@ const ContactPage = () => (
       <Page>
         <FullHero>
           <Wide>
-            <Flex flexWrap="wrap" width="100%" alignItems="center">
+            <H1>Kontakta oss</H1>
+            <Flex
+              flexWrap="wrap"
+              width="100%"
+              alignItems="center"
+              mx={[-2, -4]}
+            >
+              {[
+                { title: "Styrelsen", mail: "styrelsen@blipepp.nu" },
+                { title: "IT", mail: "it@blipepp.nu" }
+              ].map(c => {
+                return <ContactCard title={c.title} mail={c.mail} />;
+              })}
+            </Flex>
+            <H2>Pepp Lokalt</H2>
+            <Flex
+              flexWrap="wrap"
+              width="100%"
+              alignItems="center"
+              mx={[-2, -4]}
+            >
               {allContentfulGroup.edges.map(({ node }) => {
-                return (
-                  <Box width={1 / 3} key={node.name}>
-                    <GroupCard
-                      name={node.title}
-                      url={node.slug}
-                      mail={node.mail}
-                    />
-                  </Box>
-                );
+                return <ContactCard title={node.title} mail={node.mail} />;
               })}
             </Flex>
           </Wide>

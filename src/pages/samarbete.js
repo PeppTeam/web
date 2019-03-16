@@ -3,10 +3,9 @@ import Page from "../components/Page";
 
 import { Section, Narrow } from "../components/Layout";
 import { H1, P } from "../components/Typography";
-import { Flex, Box } from "@rebass/grid";
-import { PurpleLinkCard, BlueLinkCard } from "../components/LinkCard";
+import { Flex } from "@rebass/grid";
 import { Hero } from "../components/Layout/Hero";
-// import styled from "styled-components";
+import { ColorCard } from "../components/Card/Card";
 
 const SamarbetePage = () => (
   <Page>
@@ -36,12 +35,8 @@ const SamarbetePage = () => (
     <Section>
       <Narrow>
         <Flex>
-          <Box width={1 / 2} mr={3}>
-            <PurpleLinkCard to="/om-pepp">Om Pepp</PurpleLinkCard>
-          </Box>
-          <Box width={1 / 2}>
-            <BlueLinkCard to="/kontakt">Kontakt</BlueLinkCard>
-          </Box>
+          <ColorCard slug="/om-pepp" title="Om Pepp" />
+          <ColorCard slug="/kontakt" title="Kontakt" />
         </Flex>
       </Narrow>
     </Section>

@@ -4,7 +4,6 @@ import Page from "../components/Page";
 import styled from "styled-components";
 import { Section, Wide, Narrow } from "../components/Layout";
 import { Link } from "gatsby";
-import { PurpleLinkCard, BlueLinkCard } from "../components/LinkCard";
 import { Flex, Box } from "@rebass/grid";
 import { LandingHero } from "../components/Layout/Hero";
 import { H1, H2, P, Meta } from "../components/Typography";

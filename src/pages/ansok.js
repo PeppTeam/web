@@ -1,22 +1,18 @@
 import React from "react";
-import { Flex, Box } from "@rebass/grid";
+import { Flex } from "@rebass/grid";
 import Page from "../components/Page";
 import { H2, P } from "../components/Typography";
 import { Narrow } from "../components/Layout";
-import { LinkCard } from "../components/LinkCard";
 import { FullHero } from "../components/Layout/Hero";
+import { ColorCard } from "../components/Card/Card";
 
 const MemberPage = () => (
   <Page>
     <FullHero>
       <Narrow>
         <Flex width="100%">
-          <Box width={1 / 2} p={2}>
-            <LinkCard to="/projektgrupp">Projektgrupp</LinkCard>
-          </Box>
-          <Box width={1 / 2} p={2}>
-            <LinkCard to="/mentor">Mentor</LinkCard>
-          </Box>
+          <ColorCard slug="/projektgrupp" title="Projektgrupp" />
+          <ColorCard slug="/mentor" title="Mentor" />
         </Flex>
         <H2>Just nu söker vi också:</H2>
         <P>Content team Till annons</P>

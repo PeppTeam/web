@@ -7,7 +7,7 @@ import { Wide, Section, Narrow } from "../components/Layout";
 import { H1, P, Intro, Content } from "../components/Typography";
 import { Hero } from "../components/Layout/Hero";
 import { Tag } from "../components/blog/Tag";
-import { Flex } from "@rebass/grid";
+import { Flex, Box } from "@rebass/grid";
 
 const Image = styled(Img)`
 width: auto
@@ -26,9 +26,15 @@ const AuthorImage = styled(Img)`
   margin-bottom: 1rem;
 `;
 
+const PostH1 = styled(H1)`
+  text-align: center;
+  margin-bottom: 8px;
+`;
+
 const Date = styled.p`
-  color: ${props => props.theme.white};
+  color: ${props => props.theme.text};
   opacity: 0.6;
+  text-align: center;
 `;
 
 export default function BlogPost({ data }) {
@@ -36,18 +42,20 @@ export default function BlogPost({ data }) {
   return (
     <Page>
       <Hero>
-        <Narrow mb={4}>
-          <Flex flexDirection="row">
-            {post.tags.map(tag => {
-              return (
-                <Tag p={2} ml={0} m={2}>
-                  {tag}
-                </Tag>
-              );
-            })}
-          </Flex>
-          <H1>{post.title}</H1>
-          <Date> {moment(post.publishDate).format("LL", "fr")}</Date>
+        <Narrow mb={4} alignItems="center">
+          <Box mb={4} alignItems="center">
+            <Flex flexDirection="row" width="100%" justifyContent="center">
+              {post.tags.map(tag => {
+                return (
+                  <Tag p={2} ml={0} m={2}>
+                    {tag}
+                  </Tag>
+                );
+              })}
+            </Flex>
+            <PostH1>{post.title}</PostH1>
+            <Date> {moment(post.publishDate).format("LL", "fr")}</Date>
+          </Box>
           <Intro
             dangerouslySetInnerHTML={{
               __html: post.description.childMarkdownRemark.html

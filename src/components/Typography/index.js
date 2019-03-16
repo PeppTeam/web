@@ -29,7 +29,6 @@ export const H1 = styled.h1`
   font-size: 2.5rem;
   color: ${props => props.theme.body};
   font-weight: 900;
-  text-align: center;
 `;
 export const H2 = styled.h2`
   font-size: 2rem;

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Box, Flex } from "@rebass/grid";
 import { Link } from "gatsby";
-import { P, Meta, H2, H3 } from "../Typography";
+import { P, H2 } from "../Typography";
 import Img from "gatsby-image";
 
 export const CardLayout = props => (

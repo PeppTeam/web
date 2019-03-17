@@ -1,48 +1,11 @@
 import React from "react";
 // import { Link, graphql } from "gatsby";
 import Page from "../components/Page";
-import Img from "gatsby-image";
 import { H1, Intro, Content } from "../components/Typography";
 import { Section, Wide, Narrow } from "../components/Layout";
-import styled from "styled-components";
-import { Flex, Box } from "@rebass/grid";
+import { Flex } from "@rebass/grid";
 import { ImageHero } from "../components/Layout/Hero";
 import { PersonCard } from "../components/Card/Card";
-const Person = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Image = styled(Img)`
-  width: 150px;
-  height: 150px;
-  background-size: cover;
-  display: block;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  margin-bottom: 1rem;
-`;
-
-const Name = styled(Box)`
-  color: ${props => props.theme.primary};
-  font-weight: 700;
-`;
-
-const Role = styled(Box)`
-  font-size: 0.8rem;
-  color: ${props => props.theme.text};
-`;
-
-const Study = styled(Box)`
-  font-family: Raleway;
-  font-size: 0.8rem;
-  margin: 0;
-  opacity: 0.5;
-  color: ${props => props.theme.meta};
-`;
 
 export default function Group({ data }) {
   const group = data.contentfulGroup;
@@ -55,8 +18,11 @@ export default function Group({ data }) {
       >
         <Section>
           <Narrow>
-            <H1>{group.title}</H1>
+            <H1 white center>
+              {group.title}
+            </H1>
             <Intro
+              white
               dangerouslySetInnerHTML={{
                 __html: group.intro.childMarkdownRemark.html
               }}

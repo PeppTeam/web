@@ -39,7 +39,7 @@ function BlogPage() {
                 publishDate
                 tags
                 heroImage {
-                  fluid(maxWidth: 1024) {
+                  fluid(maxWidth: 800, maxHeight: 600) {
                     src
                     srcSet
                     sizes

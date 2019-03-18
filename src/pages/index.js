@@ -144,7 +144,7 @@ export default function HomePage({ data }) {
 
 export const homePageQuery = graphql`
   query Partners {
-    allContentfulPartner {
+    allContentfulPartner(sort: {fields: [name], order: ASC}) {
       edges {
         node {
           name
@@ -158,7 +158,7 @@ export const homePageQuery = graphql`
         }
       }
     }
-    allContentfulGroup {
+    allContentfulGroup(sort: {fields: [title], order: ASC}) {
       edges {
         node {
           title

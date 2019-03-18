@@ -10,7 +10,7 @@ const ContactPage = () => (
   <StaticQuery
     query={graphql`
       query ContactPage {
-        allContentfulGroup {
+        allContentfulGroup(sort: {fields: [title], order: ASC})  {
           edges {
             node {
               title

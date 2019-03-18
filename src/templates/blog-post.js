@@ -12,6 +12,8 @@ import { Flex, Box } from "@rebass/grid";
 const Image = styled(Img)`
 width: auto
 margin-bottom: 10rem;
+border-radius: 8px;
+
 
 `;
 
@@ -48,7 +50,9 @@ export default function BlogPost({ data }) {
                 );
               })}
             </Flex>
-            <H1 center>{post.title}</H1>
+            <Box mb={3}>
+              <H1 center>{post.title}</H1>
+            </Box>
             <Date> {moment(post.publishDate).format("LL", "fr")}</Date>
           </Box>
           <Intro
@@ -85,7 +89,7 @@ export const blogPostPageQuery = graphql`
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       heroImage {
-        fluid(maxWidth: 1024) {
+        fluid(maxWidth: 1200, maxHeight: 800) {
           src
           srcSet
           sizes

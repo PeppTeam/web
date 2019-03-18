@@ -7,7 +7,7 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { Tag } from "../components/blog/Tag";
-
+import { H2 } from "../components/Typography";
 const Image = styled(Img)`
   height: auto;
   border-radius: 8px;
@@ -68,7 +68,7 @@ function BlogPage() {
               >
                 {allContentfulBlogPost.edges.map(({ node }) => {
                   return (
-                    <Box width={[1 / 2]} p={3}>
+                    <Box width={[1, 1 / 2]} p={3}>
                       <Card to={`blogg/${node.slug}`}>
                         <Image fluid={node.heroImage.fluid} />
                         <Flex flexDirection="row">
@@ -81,7 +81,7 @@ function BlogPage() {
                           })}
                         </Flex>
 
-                        <h2>{node.title}</h2>
+                        <H2>{node.title}</H2>
                       </Card>
                     </Box>
                   );

@@ -82,7 +82,7 @@ export const groupPageQuery = graphql`
         role
         education
         image {
-          fluid(maxWidth: 800, maxHeight: 600) {
+          fluid(maxWidth: 800) {
             src
             srcSet
             sizes

@@ -132,9 +132,9 @@ export default function HomePage({ data }) {
       <Section>
         <Narrow>
           <Flex width="100%" flexDirection={["column", "row"]}>
-            <ColorCard to="/om-pepp" title="Om Pepp" />
+            <ColorCard slug="/om-pepp" title="Om Pepp" />
 
-            <ColorCard to="/kontakt" title="Kontakt" />
+            <ColorCard slug="/kontakt" title="Kontakt" />
           </Flex>
         </Narrow>
       </Section>
@@ -144,7 +144,7 @@ export default function HomePage({ data }) {
 
 export const homePageQuery = graphql`
   query Partners {
-    allContentfulPartner(sort: {fields: [name], order: ASC}) {
+    allContentfulPartner(sort: { fields: [name], order: ASC }) {
       edges {
         node {
           name
@@ -158,7 +158,7 @@ export const homePageQuery = graphql`
         }
       }
     }
-    allContentfulGroup(sort: {fields: [title], order: ASC}) {
+    allContentfulGroup(sort: { fields: [title], order: ASC }) {
       edges {
         node {
           title

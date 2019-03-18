@@ -5,7 +5,7 @@ export const P = styled.p`
   font-family: "Open Sans";
   line-height: 1.4;
   font-size: 1.25em;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 `;
 
 export const Intro = styled(P)`
@@ -44,7 +44,7 @@ export const Content = styled.div`
     font-family: "Open Sans";
     line-height: 1.4;
     font-size: 1.25em;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
     & > strong {
       font-weight: 700;
     }
@@ -81,6 +81,11 @@ export const Content = styled.div`
       list-style-type: decimal;
       margin-left: 20px;
     }
+  }
+
+  & img {
+    max-width: 100%;
+    border-radius: 8px;
   }
 
   & > ul {

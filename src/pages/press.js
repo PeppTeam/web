@@ -122,7 +122,9 @@ const PressPage = () => (
                 {year.articles.map(article => {
                   return (
                     <Flex mb={3} flexDirection="column">
-                      <Article href={article.url}>{article.title}</Article>
+                      <Article href={article.url} target="_blank">
+                        {article.title}
+                      </Article>
                       <Source>{article.source}</Source>
                     </Flex>
                   );

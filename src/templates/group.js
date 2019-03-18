@@ -1,5 +1,4 @@
 import React from "react";
-// import { Link, graphql } from "gatsby";
 import Page from "../components/Page";
 import { H1, Intro, Content } from "../components/Typography";
 import { Section, Wide, Narrow } from "../components/Layout";
@@ -64,10 +63,7 @@ export const groupPageQuery = graphql`
       title
       featuredImage {
         fluid(maxWidth: 2048) {
-          src
-          srcSet
-          sizes
-          aspectRatio
+          ...GatsbyContentfulFluid
         }
       }
 
@@ -86,7 +82,7 @@ export const groupPageQuery = graphql`
         role
         education
         image {
-          fluid(maxWidth: 1024) {
+          fluid(maxWidth: 800) {
             src
             srcSet
             sizes

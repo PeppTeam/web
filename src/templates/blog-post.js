@@ -4,26 +4,16 @@ import styled from "styled-components";
 import Img from "gatsby-image";
 import moment from "moment";
 import { Wide, Section, Narrow } from "../components/Layout";
-import { H1, P, Intro, Content } from "../components/Typography";
+import { H1, Intro, Content } from "../components/Typography";
 import { Hero } from "../components/Layout/Hero";
 import { Tag } from "../components/blog/Tag";
 import { Flex, Box } from "@rebass/grid";
+import { PersonCard } from "../components/Card/Card";
 
 const Image = styled(Img)`
 width: auto
 margin-bottom: 10rem;
-
-`;
-
-const AuthorImage = styled(Img)`
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  display: block;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  margin-bottom: 1rem;
+border-radius: 8px;
 `;
 
 const Date = styled.p`
@@ -48,7 +38,9 @@ export default function BlogPost({ data }) {
                 );
               })}
             </Flex>
-            <H1 center>{post.title}</H1>
+            <Box mb={3}>
+              <H1 center>{post.title}</H1>
+            </Box>
             <Date> {moment(post.publishDate).format("LL", "fr")}</Date>
           </Box>
           <Intro
@@ -73,8 +65,7 @@ export default function BlogPost({ data }) {
         </Narrow>
       </Section>
       <Section>
-        <AuthorImage fluid={post.author.image.fluid} />
-        <P>{post.author.name}</P>
+        <PersonCard image={post.author.image} name={post.author.name} />
       </Section>
     </Page>
   );
@@ -85,7 +76,7 @@ export const blogPostPageQuery = graphql`
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       heroImage {
-        fluid(maxWidth: 1024) {
+        fluid(maxWidth: 1200, maxHeight: 800) {
           src
           srcSet
           sizes

@@ -31,7 +31,7 @@ function BlogPage() {
     <StaticQuery
       query={graphql`
         query BlogPage {
-          allContentfulBlogPost(sort: {fields: [publishDate], order: DESC}) {
+          allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
             edges {
               node {
                 title

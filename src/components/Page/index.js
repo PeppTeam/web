@@ -9,7 +9,7 @@ import Header from "../Header/Header";
 import { Flex, Box } from "@rebass/grid";
 import { Section, Narrow } from "../Layout";
 import { Link } from "gatsby";
-
+import favicon from "../../assets/favicon.png";
 const Footer = styled.footer`
   text-align: center;
 `;
@@ -50,7 +50,26 @@ function Page({ children }) {
       render={data => (
         <ThemeProvider theme={theme}>
           <>
-            <Helmet title={data.site.siteMetadata.title}>
+            <Helmet
+              title={data.site.siteMetadata.title}
+              meta={[
+                {
+                  name: "description",
+                  content:
+                    "Vi skapar nya förebilder och breddar synen på teknik"
+                },
+                {
+                  name: "keywords",
+                  content: "engineering, mentoring, tech, sweden, stem"
+                }
+              ]}
+              link={[
+                { rel: "shortcut icon", type: "image/png", href: `${favicon}` }
+              ]}
+            >
+              <meta charSet="utf-8" />
+              <title>Pepp</title>
+
               <html lang="en" />
             </Helmet>
             <Header />

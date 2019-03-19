@@ -4,7 +4,7 @@ if (process.env.ENVIRONMENT !== "production") {
   dotenv.config();
 }
 
-const { spaceId, accessToken } = process.env;
+const { spaceId, accessToken, trackingId } = process.env;
 
 module.exports = {
   siteMetadata: {
@@ -30,6 +30,12 @@ module.exports = {
       }
     },
     `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId
+      }
+    }
   ]
 };

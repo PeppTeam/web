@@ -36,6 +36,8 @@ module.exports = {
       options: {
         trackingId
       }
-    }
+    },
+    `gatsby-plugin-sass`,
+
   ]
 };

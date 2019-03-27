@@ -10,6 +10,8 @@ import { Flex, Box } from "@rebass/grid";
 import { Section, Narrow } from "../Layout";
 import { Link } from "gatsby";
 import favicon from "../../assets/favicon.png";
+import '../index.scss'
+
 const Footer = styled.footer`
   text-align: center;
 `;

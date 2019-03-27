@@ -10,12 +10,24 @@ export default function Group({ data }) {
   const group = data.contentfulGroup;
   return (
     <Page>
-      <ImageHero
+      <section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Hero title
+      </h1>
+      <h2 class="subtitle">
+        Hero subtitle
+      </h2>
+    </div>
+  </div>
+</section>
+      {/* <ImageHero
         Tag="section"
         fluid={group.featuredImage.fluid}
         backgroundColor={`#464696`}
-      >
-        <Section>
+      > */}
+        {/* <Section>
           <Narrow>
             <H1 white center>
               {group.title}
@@ -28,7 +40,7 @@ export default function Group({ data }) {
             />
           </Narrow>
         </Section>
-      </ImageHero>
+      </ImageHero> */}
       <Section>
         <Narrow>
           <Content

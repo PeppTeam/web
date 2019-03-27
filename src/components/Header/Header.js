@@ -42,21 +42,26 @@ opacity: 0.9;
 `;
 
 const Header = () => (
-  <Background>
-    <Wide>
-      <Flex flexDirection="column" justifyContent="center" alignItems="center">
-        <LogoLink to="/">
+
+  <nav class="level">
+  <p class="level-item has-text-centered">
+    <a class="link is-info">Om Pepp</a>
+  </p>
+  <p class="level-item has-text-centered">
+    <a class="link is-info">Join</a>
+  </p>
+  <p class="level-item has-text-centered">
+  <LogoLink to="/">
           <Logo />
         </LogoLink>
-        <div>
-          <NavLink to="/om-pepp">Om Pepp</NavLink>
-          <NavLink to="/ansok">Vill du vara med?</NavLink>
-          <NavLink to="/samarbete">Samarbete</NavLink>
-          <NavLink to="/blogg">Blogg</NavLink>
-        </div>
-      </Flex>
-    </Wide>
-  </Background>
+  </p>
+  <p class="level-item has-text-centered">
+    <a class="link is-info">Samarbete</a>
+  </p>
+  <p class="level-item has-text-centered">
+    <a class="link is-info">Blogg</a>
+  </p>
+</nav>
 );
 
 export default Header;

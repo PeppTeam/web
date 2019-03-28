@@ -29,7 +29,9 @@ const Logo = () => (
         }
       }
     `}
-    render={data => <Img fluid={data.contentfulAsset.fluid} />}
+    render={data => (
+      <Img fluid={data.contentfulAsset.fluid} style={{ width: "100%", height: '100%' }} />
+    )}
   />
 );
 export default Logo;

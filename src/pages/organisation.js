@@ -1,11 +1,9 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { Flex } from "@rebass/grid";
 import Page from "../components/Page";
-import { Section, Narrow, Wide } from "../components/Layout";
-import { H1, P, H2 } from "../components/Typography";
+import {  Content } from "../components/Typography";
+import { Person } from "../components/Card/Person";
 import { Hero } from "../components/Layout/Hero";
-import { PersonCard } from "../components/Card/Card";
 
 const ContactPage = () => (
   <StaticQuery
@@ -30,7 +28,7 @@ const ContactPage = () => (
                   }
                 }
                 image {
-                  fluid(maxWidth: 1024) {
+                  fluid(maxWidth: 1024, maxHeight: 1024) {
                     src
                     srcSet
                     sizes
@@ -45,47 +43,34 @@ const ContactPage = () => (
     `}
     render={({ allContentfulOrganisation }) => (
       <Page>
-        <Hero>
-          <H1>Organisation</H1>
-        </Hero>
-        <Section>
+        <Hero title="Organisation" />
+
           {allContentfulOrganisation.edges.map(({ node }) => {
             return (
               <>
-                <Narrow mb={3}>
-                  <Flex mb={4} flexDirection="column">
-                    <H2>{node.title}</H2>
-                    <P
-                      dangerouslySetInnerHTML={{
-                        __html: node.text.childMarkdownRemark.html
-                      }}
-                    />
-                  </Flex>
-                </Narrow>
-                <Wide>
-                  <Flex
-                    flexWrap="wrap"
-                    width="100%"
-                    alignItems="flex-start"
-                    m={-2}
-                    justifyContent="stretch"
-                  >
+                      <Content>
+
+                <h2>{node.title}</h2>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: node.text.childMarkdownRemark.html
+                  }}
+                />
+                </Content>
+                <div className="container">
+                  <div class="columns is-multiline is-8 is-variable">
                     {node.persons.map(person => {
                       return (
-                        <PersonCard
-                          name={person.name}
-                          role={person.role}
-                          image={person.image}
-                          email={person.email}
-                        />
+                        <div class="column is-3 has-text-centered">
+                          <Person person={person} />
+                        </div>
                       );
                     })}
-                  </Flex>
-                </Wide>
+                  </div>
+                </div>
               </>
             );
           })}
-        </Section>
       </Page>
     )}
   />

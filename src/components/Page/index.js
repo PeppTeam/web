@@ -6,27 +6,18 @@ import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../theme";
 import Header from "../Header/Header";
-import { Flex, Box } from "@rebass/grid";
-import { Section, Narrow } from "../Layout";
+
 import { Link } from "gatsby";
 import favicon from "../../assets/favicon.png";
-import '../index.scss'
-
-const Footer = styled.footer`
-  text-align: center;
-`;
-
-const NavLink = styled(Link)`
-color:${props => props.theme.text};
-font-family: Raleway;
-text-decoration: none;
-padding: 0 10px;
-font-weight: 700;
+import "../index.scss";
+import pattern from "../../assets/pattern.svg";
 
 
-&:hover {
-  color:${props => props.theme.pop};
 
+const Background = styled.div`
+  background: url(${pattern}) #f7faff repeat-y;
+  background-position: top center;
+  background-size: cover;
 `;
 
 function Page({ children }) {
@@ -34,7 +25,7 @@ function Page({ children }) {
 		${reset}
 
 		body {
-			font-family: 'Raleway', Georgia;
+      font-family: 'Raleway', Georgia;
 		}
 	`;
 
@@ -74,35 +65,33 @@ function Page({ children }) {
 
               <html lang="en" />
             </Helmet>
-            <Header />
-            {children}
-            <Footer>
-              <Section
-                justifyContent="center"
-                css={{
-                  minHeight: "20vh"
-                }}
-              >
-                <Narrow>
-                  <Flex flexWrap="wrap">
-                    {[
-                      { children: "Organisation", to: "/organisation" },
-                      { children: "Kontakt", to: "/kontakt" },
-                      { children: "Press", to: "/press" },
-                      { children: "Dataskydd", to: "/dataskydd" },
-                      { children: "Samarbete", to: "/samarbete" },
-                      { children: "About Pepp", to: "/about" }
-                    ].map(item => {
-                      return (
-                        <Box width={[1 / 3, 1 / 6]}>
-                          <NavLink {...item} />
-                        </Box>
-                      );
-                    })}
-                  </Flex>
-                </Narrow>
-              </Section>
-            </Footer>
+
+            <Background>
+              <Header />
+              {children}
+
+              <footer class="footer">
+                <div class="columns has-text-centered">
+                  {[
+                    { children: "Organisation", to: "/organisation" },
+                    { children: "Kontakt", to: "/kontakt" },
+                    { children: "Press", to: "/press" },
+                    { children: "Dataskydd", to: "/dataskydd" },
+                    { children: "Samarbete", to: "/samarbete" },
+                    { children: "About Pepp", to: "/about" }
+                  ].map(item => {
+                    return (
+                      <div className="column">
+                        <Link
+                          className="is-uppercase	has-text-weight-semibold"
+                          {...item}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </footer>
+            </Background>
           </>
         </ThemeProvider>
       )}

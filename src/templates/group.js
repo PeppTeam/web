@@ -1,70 +1,71 @@
 import React from "react";
 import Page from "../components/Page";
-import { H1, Intro, Content } from "../components/Typography";
-import { Section, Wide, Narrow } from "../components/Layout";
-import { Flex } from "@rebass/grid";
-import { ImageHero } from "../components/Layout/Hero";
-import { PersonCard } from "../components/Card/Card";
+import Img from "gatsby-image";
+import { Person } from "../components/Card/Person";
+import styled from "styled-components";
+
+const FeaturedImage = styled(Img)`
+  filter: grayscale(100%) brightness(120%);
+  border-radius:4px;
+`;
 
 export default function Group({ data }) {
   const group = data.contentfulGroup;
   return (
     <Page>
-      <section class="hero">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Hero title
-      </h1>
-      <h2 class="subtitle">
-        Hero subtitle
-      </h2>
-    </div>
-  </div>
-</section>
-      {/* <ImageHero
-        Tag="section"
-        fluid={group.featuredImage.fluid}
-        backgroundColor={`#464696`}
-      > */}
-        {/* <Section>
-          <Narrow>
-            <H1 white center>
-              {group.title}
-            </H1>
-            <Intro
-              white
-              dangerouslySetInnerHTML={{
-                __html: group.intro.childMarkdownRemark.html
-              }}
-            />
-          </Narrow>
-        </Section>
-      </ImageHero> */}
-      <Section>
-        <Narrow>
-          <Content
-            dangerouslySetInnerHTML={{
-              __html: group.body.childMarkdownRemark.html
-            }}
-          />
-        </Narrow>
-      </Section>
-      <Section>
-        <Wide alignItems="center">
-          <Flex width="100%" flexWrap="wrap" justifyContent="center">
+      <section class="hero is-primary is-medium">
+        <div class="hero-body">
+          <div class="container">
+          
+            <div className="columns">
+              <div className="column is-half">
+                <h1 class="title"> {group.title}</h1>
+                <p
+                  class="subtitle"
+                  dangerouslySetInnerHTML={{
+                    __html: group.intro.childMarkdownRemark.html
+                  }}
+                />
+              </div>
+              <div className="column is-half">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+
+        <div class="container">
+
+          <div class="columns is-centered">
+            <div class="column is-half ">
+            <FeaturedImage fluid={group.featuredImage.fluid} />
+
+              <div
+                class="content"
+                dangerouslySetInnerHTML={{
+                  __html: group.body.childMarkdownRemark.html
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+
+          <div class="columns is-multiline is-8 is-variable">
             {group.persons.map(person => {
               return (
-                <PersonCard
-                  image={person.image}
-                  name={person.name}
-                  role={person.role}
-                />
+                <div class="column is-3 has-text-centered">
+                  <Person person={person} />
+                </div>
               );
             })}
-          </Flex>
-        </Wide>
-      </Section>
+          </div>
+        </div>
+      </section>
     </Page>
   );
 }
@@ -94,7 +95,7 @@ export const groupPageQuery = graphql`
         role
         education
         image {
-          fluid(maxWidth: 800) {
+          fluid(maxWidth: 1024, maxHeight: 1024) {
             src
             srcSet
             sizes

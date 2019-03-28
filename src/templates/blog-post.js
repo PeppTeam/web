@@ -3,29 +3,14 @@ import Page from "../components/Page";
 import styled from "styled-components";
 import Img from "gatsby-image";
 import moment from "moment";
+import {Person} from '../components/Card/Person'
 
-import { PersonCard } from "../components/Card/Card";
+
 
 const Image = styled(Img)`
 width: auto
 margin-bottom: 10rem;
 border-radius: 8px;
-`;
-
-const Date = styled.p`
-  color: ${props => props.theme.text};
-  opacity: 0.6;
-  text-align: center;
-`;
-
-const AuthorImage = styled(Img)`
-  width: 15rem;
-  height: 15rem;
-  background-size: cover;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50;
 `;
 
 export default function BlogPost({ data }) {
@@ -79,8 +64,8 @@ export default function BlogPost({ data }) {
         <div class="container">
           <div class="columns is-centered">
             <div class="column is-one-quarter">
-              <AuthorImage fluid={post.author.image.fluid} />
-              <p>{post.author.name}</p>
+            <Person person={post.author}/>
+              
             </div>
           </div>
         </div>
@@ -115,7 +100,7 @@ export const blogPostPageQuery = graphql`
         name
         role
         image {
-          fluid {
+          fluid(maxWidth: 1024, maxHeight: 1024) {
             src
             srcSet
             sizes

@@ -6,7 +6,7 @@ import { Flex, Box } from "@rebass/grid";
 import Img from "gatsby-image";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { Tag } from "../components/blog/Tag";
+
 import { H2 } from "../components/Typography";
 const Image = styled(Img)`
   height: auto;
@@ -58,37 +58,27 @@ function BlogPage() {
       `}
       render={({ allContentfulBlogPost, props }) => (
         <Page>
-          <Section>
-            <Wide alignItems="center">
-              <Flex
-                width="100%"
-                flexWrap="wrap"
-                justifyContent="flex-start"
-                mx={-3}
-              >
+          <section className="section">
+            <div className="container">
+              <div className="columns is-multiline">
                 {allContentfulBlogPost.edges.map(({ node }) => {
                   return (
-                    <Box width={[1, 1 / 2]} p={3}>
-                      <Card to={`blogg/${node.slug}`}>
+                    <div className="column is-one-third">
+                      <Link to={`blogg/${node.slug}`}>
                         <Image fluid={node.heroImage.fluid} />
-                        <Flex flexDirection="row">
-                          {node.tags.map(tag => {
-                            return (
-                              <Tag p={2} ml={0} m={2}>
-                                {tag}
-                              </Tag>
-                            );
-                          })}
-                        </Flex>
 
-                        <H2>{node.title}</H2>
-                      </Card>
-                    </Box>
+                        {node.tags.map(tag => {
+                          return <span class="tag is-primary">{tag}</span>;
+                        })}
+
+                        <h2 class="title is-4">{node.title}</h2>
+                      </Link>
+                    </div>
                   );
                 })}
-              </Flex>
-            </Wide>
-          </Section>
+              </div>
+            </div>
+          </section>
         </Page>
       )}
     />

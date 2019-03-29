@@ -1,8 +1,7 @@
 import React from "react";
 import Page from "../components/Page";
 import { Section, Narrow } from "../components/Layout";
-import {  H2 } from "../components/Typography";
-import {  Hero } from "../components/Layout/Hero";
+import { Hero } from "../components/Layout/Hero";
 import { Flex } from "@rebass/grid";
 import styled from "styled-components";
 
@@ -107,14 +106,13 @@ const Source = styled.p`
 
 const PressPage = () => (
   <Page>
-  <Hero title="Press"/>
-
+    <Hero title="Press" />
     <Section>
       <Narrow>
         {articles.map(year => {
           return (
             <>
-              <H2>{year.year}</H2>
+              <h2>{year.year}</h2>
               <Flex flexDirection="column" mb={4} mt={2}>
                 {year.articles.map(article => {
                   return (

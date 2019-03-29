@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { injectGlobal } from "styled-components";
-import reset from "styled-reset";
+import styled from "styled-components";
 import Helmet from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider } from "styled-components";
@@ -12,8 +11,6 @@ import favicon from "../../assets/favicon.png";
 import "../index.scss";
 import pattern from "../../assets/pattern.svg";
 
-
-
 const Background = styled.div`
   background: url(${pattern}) #f7faff repeat-y;
   background-position: top center;
@@ -21,14 +18,6 @@ const Background = styled.div`
 `;
 
 function Page({ children }) {
-  injectGlobal`
-		${reset}
-
-		body {
-      font-family: 'Raleway', Georgia;
-		}
-	`;
-
   return (
     <StaticQuery
       query={graphql`
@@ -63,7 +52,7 @@ function Page({ children }) {
               <meta charSet="utf-8" />
               <title>Pepp</title>
 
-              <html lang="en" />
+              <html lang="sv" />
             </Helmet>
 
             <Background>

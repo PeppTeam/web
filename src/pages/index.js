@@ -93,16 +93,18 @@ export default function HomePage({ data }) {
           </Box>
           <Flex flexWrap="wrap" width="100%" alignItems="center" m={-3}>
             {allPartners.map(({ node }) => {
-              return (
-                <Box width={[1 / 3, 1 / 5, 1 / 8]} p={4}>
-                  <a href={node.link}>
-                    <Logo
-                      src={node.logo.file.url}
-                      alt={node.logo.file.fileName}
-                    />
-                  </a>
-                </Box>
-              );
+              if (node.logo.file) {
+                return (
+                  <Box width={[1 / 3, 1 / 5, 1 / 8]} p={4}>
+                    <a href={node.link}>
+                      <Logo
+                        src={node.logo.file.url}
+                        alt={node.logo.file.fileName}
+                      />
+                    </a>
+                  </Box>
+                );
+              } else return null;
             })}
           </Flex>
         </Wide>

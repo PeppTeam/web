@@ -124,11 +124,11 @@ export const PersonCard = ({ image, name, role, email }) => {
   return (
     <Box width={[1, 1 / 2, 1 / 3]}>
       <StyledPerson flexDirection="column">
-        <Image fluid={image.fluid} />
+        {image ? <Image fluid={image.fluid} /> : null}
         <Box justifyContent="center">
-          <Name>{name}</Name>
-          <Role>{role}</Role>
-          <Email>{email}</Email>
+          {name ? <Name>{name}</Name> : null}
+          {role ? <Role>{role}</Role> : null}
+          {email ? <Email>{email}</Email> : email}
         </Box>
       </StyledPerson>
     </Box>

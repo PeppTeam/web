@@ -82,7 +82,7 @@ export default function HomePage({ data }) {
       </section>
       <section class="section">
         <div class="container">
-          <h2 class="subtitle">Vi stödjer Pepp</h2>
+          <h2 class="title">Våra partners</h2>
           <div class="columns is-multiline is-vcentered">
             {allPartners.map(({ node }) => {
               return (
@@ -101,7 +101,7 @@ export default function HomePage({ data }) {
       </section>
       <section class="section">
         <div class="container">
-          <h2 class="subtitle">Systerorganisationer</h2>
+          <h2 class="title">Systerorganisationer</h2>
           <div class="columns is-multiline">
             {allFriends.map(({ node }) => {
               return (

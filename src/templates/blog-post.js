@@ -79,7 +79,7 @@ export const blogPostPageQuery = graphql`
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       heroImage {
-        fluid(maxWidth: 1200, maxHeight: 800) {
+        fluid(maxWidth: 1600, maxHeight: 900) {
           src
           srcSet
           sizes

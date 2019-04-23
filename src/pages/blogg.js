@@ -1,30 +1,17 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Page from "../components/Page";
-import { Section, Wide } from "../components/Layout";
-import { Flex, Box } from "@rebass/grid";
+
 import Img from "gatsby-image";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-import { H2 } from "../components/Typography";
 const Image = styled(Img)`
   height: auto;
   border-radius: 8px;
 `;
 
-const Card = styled(Link)`
-  text-decoration: none;
-  font-family: Raleway;
-  color: ${props => props.theme.body};
-  font-size: 30px;
-  font-weight: 900;
 
-  &:hover {
-    opacity: 0.8;
-    transform: scale(1.2);
-  }
-`;
 
 function BlogPage() {
   return (

@@ -5,7 +5,6 @@ import { Person } from "../components/Card/Person";
 import styled from "styled-components";
 
 const FeaturedImage = styled(Img)`
-  filter: grayscale(100%) brightness(120%);
   border-radius:4px;
 `;
 
@@ -58,7 +57,7 @@ export default function Group({ data }) {
           <div class="columns is-multiline is-8 is-variable">
             {group.persons.map(person => {
               return (
-                <div class="column is-3 has-text-centered">
+                <div class="column is-2 has-text-centered">
                   <Person person={person} />
                 </div>
               );

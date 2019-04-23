@@ -59,8 +59,8 @@ function Page({ children }) {
               <Header />
               {children}
 
-              <footer class="footer">
-                <div class="columns has-text-centered">
+              <footer className="footer">
+                <div className="columns has-text-centered">
                   {[
                     { children: "Organisation", to: "/organisation" },
                     { children: "Kontakt", to: "/kontakt" },
@@ -70,7 +70,7 @@ function Page({ children }) {
                     { children: "About Pepp", to: "/about" }
                   ].map(item => {
                     return (
-                      <div className="column">
+                      <div className="column" key={item.children}>
                         <Link
                           className="is-uppercase	has-text-weight-semibold"
                           {...item}

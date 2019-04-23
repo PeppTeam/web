@@ -6,8 +6,8 @@ import styled from "styled-components";
 const LogoLink = styled(Link)`
   width: 4rem;
   height: 4rem;
-  display:flex;
-  alignItems:center;
+  display: flex;
+  alignItems: center;
 `;
 
 class Header extends React.Component {
@@ -27,7 +27,7 @@ class Header extends React.Component {
       <nav className="navbar"
           aria-label="main navigation"
       >
-      <div class="container">
+      <div className="container">
         <div className="navbar-brand" style={{margin: '30px'}}>
         <LogoLink to="/">
            <Logo />

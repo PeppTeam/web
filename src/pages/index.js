@@ -20,22 +20,22 @@ export default function HomePage({ data }) {
   const allGroups = data.allContentfulGroup.edges;
   return (
     <Page>
-      <section class="hero is-info is-large">
-        <div class="hero-body">
-          <div class="container has-text-centered">
-            <h1 class="title">
+      <section className="hero is-info is-large">
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            <h1 className="title">
               Vi skapar nya förebilder och breddar synen på teknik
             </h1>
-            <Link class="button is-white" to="ansok">
+            <Link className="button is-white" to="ansok">
               Join
             </Link>
           </div>
         </div>
       </section>
-      <section class="section">
-        <div class="container">
-          <div class="columns">
-            <div class="column">
+      <section className="section">
+        <div className="container">
+          <div className="columns">
+            <div className="column">
               <p>
                 Pepp är ett mentorsskapsprogram där du som tjej* får en mentor
                 från universitetet som hjälper dig upptäcka de oändliga
@@ -59,18 +59,17 @@ export default function HomePage({ data }) {
         </div>
       </section>
 
-      <section class="section">
-        <div class="container">
-          <div class="columns is-multiline is-vcentered">
-            {allGroups.map(({ node }) => (
+      <section className="section">
+        <div className="container">
+          <div className="columns is-multiline is-vcentered">
+            {allGroups.map(({ node }, index) => (
               <div
-                class="column is-one-third"
-                title={node.title}
-                slug={node.slug}
+                className="column is-one-third"
+                key={index}
               >
-                <Link class="box has-text-centered" to={node.slug}>
+                <Link className="box has-text-centered" to={node.slug}>
                   <strong>
-                    <p className="is-size-3 has-text-weight-bold	">
+                    <p className="is-size-3 has-text-weight-bold">
                       {node.title}
                     </p>
                   </strong>
@@ -80,40 +79,52 @@ export default function HomePage({ data }) {
           </div>
         </div>
       </section>
-      <section class="section">
-        <div class="container">
-          <h2 class="title">Våra partners</h2>
-          <div class="columns is-multiline is-vcentered">
-            {allPartners.map(({ node }) => {
+      <section className="section">
+        <div className="container">
+          <h2 className="title">Våra partners</h2>
+          <div className="columns is-multiline is-vcentered">
+            {allPartners.map(({ node }, index) => {
+              const logo = <Logo
+                src={node.logo.file.url}
+                alt={node.logo.file.fileName}
+              />
+              if (node.link) {
+                return (
+                  <Link className="column is-1" to={node.link} key={index}>
+                    {logo}
+                  </Link>
+                );
+              }
               return (
-                <Link class="column is-1" to={node.link}>
-                  <a href={node.link}>
-                    <Logo
-                      src={node.logo.file.url}
-                      alt={node.logo.file.fileName}
-                    />
-                  </a>
-                </Link>
+                <div className="column is-1" to={node.link} key={index}>
+                  {logo}
+                </div>
               );
             })}
           </div>
         </div>
       </section>
-      <section class="section">
-        <div class="container">
-          <h2 class="title">Systerorganisationer</h2>
-          <div class="columns is-multiline">
-            {allFriends.map(({ node }) => {
+      <section className="section">
+        <div className="container">
+          <h2 className="title">Systerorganisationer</h2>
+          <div className="columns is-multiline">
+            {allFriends.map(({ node }, index) => {
+              const logo = <Logo
+              src={node.logo.file.url}
+              alt={node.logo.file.fileName}
+            />
+            if (node.link) {
               return (
-                <Link class="column is-2" to={node.link}>
-                  <a href={node.link}>
-                    <Logo
-                      src={node.logo.file.url}
-                      alt={node.logo.file.fileName}
-                    />
-                  </a>
+                <Link className="column is-2" to={node.link} key={index}>
+                  {logo}
                 </Link>
               );
+            }
+            return (
+              <div className="column is-2" to={node.link} key={index}>
+                {logo}
+              </div>
+            );
             })}
           </div>
         </div>
@@ -136,6 +147,7 @@ export const homePageQuery = graphql`
             }
           }
           homePage
+          link
         }
       }
     }

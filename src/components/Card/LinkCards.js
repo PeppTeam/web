@@ -9,9 +9,9 @@ export const LinkCards = () => {
           {[
             { slug: "om-pepp", title: "Om Pepp" },
             { slug: "kontakt", title: "Kontakt" }
-          ].map(i => {
+          ].map((i, index) => {
             return (
-              <div className="column is-half">
+              <div className="column is-half" key={index}>
                 <Link className="box" to={i.slug}>
                   {i.title}
                 </Link>

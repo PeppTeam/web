@@ -8,6 +8,7 @@ const RoundImage = styled(Img)`
 `;
 
 export const Person = ({ person }) => {
+  console.log(person)
   return (
     <div className="has-text-centered">
       {person.image ? <RoundImage fluid={person.image.fluid} /> : null}

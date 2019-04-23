@@ -5,43 +5,37 @@ import { Person } from "../components/Card/Person";
 import styled from "styled-components";
 
 const FeaturedImage = styled(Img)`
-  border-radius:4px;
+  border-radius: 4px;
 `;
 
 export default function Group({ data }) {
   const group = data.contentfulGroup;
   return (
     <Page>
-      <section class="hero is-primary is-medium">
-        <div class="hero-body">
-          <div class="container">
-          
-            <div className="columns">
-              <div className="column is-half">
-                <h1 class="title"> {group.title}</h1>
+      <section className="section">
+        <div className="hero-body">
+          <div className="container">
+            <div className="columns is-centered">
+              <div className="column is-half ">
+                <h1 className="title"> {group.title}</h1>
                 <p
-                  class="subtitle"
+                  className="subtitle"
                   dangerouslySetInnerHTML={{
                     __html: group.intro.childMarkdownRemark.html
                   }}
                 />
-              </div>
-              <div className="column is-half">
+                <FeaturedImage fluid={group.featuredImage.fluid} />
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section class="section">
-
-        <div class="container">
-
-          <div class="columns is-centered">
-            <div class="column is-half ">
-            <FeaturedImage fluid={group.featuredImage.fluid} />
-
+      <section className="section">
+        <div className="container">
+          <div className="columns is-centered">
+            <div className="column is-half ">
               <div
-                class="content"
+                className="content"
                 dangerouslySetInnerHTML={{
                   __html: group.body.childMarkdownRemark.html
                 }}
@@ -53,11 +47,13 @@ export default function Group({ data }) {
 
       <section className="section">
         <div className="container">
-
-          <div class="columns is-multiline is-8 is-variable">
+          <div className="columns is-multiline is-8 is-variable">
             {group.persons.map(person => {
               return (
-                <div class="column is-2 has-text-centered">
+                <div
+                  className="column is-2 has-text-centered"
+                  key={person.name}
+                >
                   <Person person={person} />
                 </div>
               );

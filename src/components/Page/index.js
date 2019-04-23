@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import Helmet from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider } from "styled-components";
@@ -9,13 +8,8 @@ import Header from "../Header/Header";
 import { Link } from "gatsby";
 import favicon from "../../assets/favicon.png";
 import "../index.scss";
-import pattern from "../../assets/pattern.svg";
 
-const Background = styled.div`
-  background: url(${pattern}) #f7faff repeat-y;
-  background-position: top center;
-  background-size: cover;
-`;
+
 
 function Page({ children }) {
   return (
@@ -55,7 +49,7 @@ function Page({ children }) {
               <html lang="sv" />
             </Helmet>
 
-            <Background>
+           
               <Header />
               {children}
 
@@ -80,7 +74,6 @@ function Page({ children }) {
                   })}
                 </div>
               </footer>
-            </Background>
           </>
         </ThemeProvider>
       )}

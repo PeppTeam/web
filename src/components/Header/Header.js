@@ -2,61 +2,75 @@ import React from "react";
 import { Link } from "gatsby";
 import Logo from "../Logo";
 import styled from "styled-components";
-import { Wide } from "../Layout";
-import { Flex } from "@rebass/grid";
 
 const LogoLink = styled(Link)`
-  width: 80px;
-  height: 80px;
-  margin: 20px;
-`;
-const Background = styled.header`
-  width: 100vw;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-  z-index: 9999;
+  width: 4rem;
+  height: 4rem;
+  display:flex;
+  alignItems:center;
 `;
 
-const NavLink = styled(Link)`
-color: ${props => props.theme.body}
-font-family: Raleway;
-text-decoration: none;
-padding: 0 10px;
-font-weight: 700;
-z-index: 9999;
-opacity: 0.9;
+class Header extends React.Component {
 
-&:visited {
-  color: ${props => props.theme.body}
-}
+  state = {
+    isActive: false,
+  }
 
-&:hover {
-  color: ${props => props.theme.text}
+  toggleNav = () => {
+    this.setState(prevState => ({
+      isActive: !prevState.isActive
+    }))
+  }
 
-}
-
-
-`;
-
-const Header = () => (
-  <Background>
-    <Wide>
-      <Flex flexDirection="column" justifyContent="center" alignItems="center">
+  render() {
+    return (
+      <nav className="navbar"
+          aria-label="main navigation"
+      >
+      <div class="container">
+        <div className="navbar-brand" style={{margin: '30px'}}>
         <LogoLink to="/">
-          <Logo />
-        </LogoLink>
-        <div>
-          <NavLink to="/om-pepp">Om Pepp</NavLink>
-          <NavLink to="/ansok">Vill du vara med?</NavLink>
-          <NavLink to="/samarbete">Samarbete</NavLink>
-          <NavLink to="/blogg">Blogg</NavLink>
+           <Logo />
+         </LogoLink>
+          <button className="navbar-burger" onClick={this.toggleNav}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
-      </Flex>
-    </Wide>
-  </Background>
-);
+        <div className={ this.state.isActive ? 'navbar-menu is-active' : 'navbar-menu'}>
+          <div className="navbar-start">
+          <Link className="navbar-item" to="om-pepp">
+            Om Pepp
+           </Link>
+           <Link className="navbar-item" to="ansok">
+             Gå med
+           </Link>
+           <Link className="navbar-item" to="blogg">
+             Blogg
+           </Link>
+          </div>
+          <div className="navbar-end">
+            <a className="navbar-item" href="https://github.com/aaronklaser">
+              <span className="icon">
+                <i className="fab fa-lg fa-github"></i>
+              </span>
+            </a>
+            <a className="navbar-item" href="https://twitter.com/awklaser">
+              <span className="icon has-text-info" style={{ color: '#0084FF' }}>
+                <i className="fab fa-lg fa-twitter"></i>
+                Twitter🇬🇧
+              </span>
+            </a>
+            
+          </div>
+        </div></div>
+      </nav>
+    )
+  }
+}
 
-export default Header;
+export default Header
+    
+
+

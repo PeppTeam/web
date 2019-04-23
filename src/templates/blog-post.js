@@ -3,12 +3,9 @@ import Page from "../components/Page";
 import styled from "styled-components";
 import Img from "gatsby-image";
 import moment from "moment";
-import { Wide, Section, Narrow } from "../components/Layout";
-import { H1, Intro, Content } from "../components/Typography";
-import { Hero } from "../components/Layout/Hero";
-import { Tag } from "../components/blog/Tag";
-import { Flex, Box } from "@rebass/grid";
-import { PersonCard } from "../components/Card/Card";
+import {Person} from '../components/Card/Person'
+
+
 
 const Image = styled(Img)`
 width: auto
@@ -16,57 +13,63 @@ margin-bottom: 10rem;
 border-radius: 8px;
 `;
 
-const Date = styled.p`
-  color: ${props => props.theme.text};
-  opacity: 0.6;
-  text-align: center;
-`;
-
 export default function BlogPost({ data }) {
   const post = data.contentfulBlogPost;
   return (
     <Page>
-      <Hero>
-        <Narrow mb={4} alignItems="center">
-          <Box mb={4} alignItems="center">
-            <Flex flexDirection="row" width="100%" justifyContent="center">
-              {post.tags.map(tag => {
-                return (
-                  <Tag p={2} ml={0} m={2}>
-                    {tag}
-                  </Tag>
-                );
-              })}
-            </Flex>
-            <Box mb={3}>
-              <H1 center>{post.title}</H1>
-            </Box>
-            <Date> {moment(post.publishDate).format("LL", "fr")}</Date>
-          </Box>
-          <Intro
-            dangerouslySetInnerHTML={{
-              __html: post.description.childMarkdownRemark.html
-            }}
-          />
-        </Narrow>
-      </Hero>
-      <Section>
-        <Wide>
+      <section class="hero">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <div class="columns">
+              <div class="column is-half is-offset-one-quarter">
+                {post.tags.map(tag => {
+                  return <span class="tag is-primary">{tag}</span>;
+                })}
+                <h1 class="title">{post.title}</h1>
+                <h2 class="subtitle">
+                  {moment(post.publishDate).format("LL", "fr")}
+                </h2>
+                <p
+                  class="has-text-weight-semibold"
+                  dangerouslySetInnerHTML={{
+                    __html: post.description.childMarkdownRemark.html
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
           <Image fluid={post.heroImage.fluid} />
-        </Wide>
-      </Section>
-      <Section>
-        <Narrow>
-          <Content
-            dangerouslySetInnerHTML={{
-              __html: post.body.childMarkdownRemark.html
-            }}
-          />
-        </Narrow>
-      </Section>
-      <Section>
-        <PersonCard image={post.author.image} name={post.author.name} />
-      </Section>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-half ">
+              <div
+                class="content"
+                dangerouslySetInnerHTML={{
+                  __html: post.body.childMarkdownRemark.html
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-one-quarter">
+            <Person person={post.author}/>
+              
+            </div>
+          </div>
+        </div>
+      </section>
     </Page>
   );
 }
@@ -76,7 +79,7 @@ export const blogPostPageQuery = graphql`
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       heroImage {
-        fluid(maxWidth: 1200, maxHeight: 800) {
+        fluid(maxWidth: 1600, maxHeight: 900) {
           src
           srcSet
           sizes
@@ -97,7 +100,7 @@ export const blogPostPageQuery = graphql`
         name
         role
         image {
-          fluid {
+          fluid(maxWidth: 1024, maxHeight: 1024) {
             src
             srcSet
             sizes
